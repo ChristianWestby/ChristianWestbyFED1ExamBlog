@@ -1,21 +1,60 @@
-const blogSection = document.getElementById("blog-list");
+const singlePostSection = document.getElementById("single-post");
+const blogSection1 = document.getElementById("blog-list-1");
+const blogSection2 = document.getElementById("blog-list-2");
 
-fetch("https://v2.api.noroff.dev/blog/posts/Christian_Westby")
+// Fetch a single post before fetching the carousels
+fetch("https://v2.api.noroff.dev/blog/posts/Christian_Westby/")
     .then(response => response.json())
-    .then(function appendData(data){
+    .then(function appendSinglePost(data) {
+        const singlePostData = data.data[0]; // Fetch the first post
+        const singlePostDiv = document.createElement("div");
+        singlePostDiv.innerHTML = `
+            <h1>${singlePostData.title}</h1>
+            <p>${singlePostData.body}</p>
+            <h2>ID number ${singlePostData.id}</h2>
+            <img src="${singlePostData.media.url}">
+            <a href="/post/text.html?id=${singlePostData.id}">Click here to open blog post</a>
+        `;
+        singlePostSection.appendChild(singlePostDiv);
+    });
+
+// Fetch the carousels
+fetch("https://v2.api.noroff.dev/blog/posts/Christian_Westby/")
+    .then(response => response.json())
+    .then(function appendData(data) {
         const blogData = data.data;
+        let postIndex1 = 1; // Variable to keep track of placement order for carousel 1
+        let postIndex2 = 1; // Variable to keep track of placement order for carousel 2
 
         blogData.forEach(data => {
             const newDiv = document.createElement("div");
+            const postId = `post-${postIndex1}`; // Unique ID based on placement order for carousel 1
+            newDiv.id = postId; // Set the ID of the div
+
             newDiv.innerHTML = `
-                <div style="background-color: grey">
-                    <h1>${data.title}</h1>
-                    <p>${data.body}</p>
-                    <h2>ID number ${data.id}</h2>
-                     <img src="${data.media.url}" style="height: 100px; width: 100px">
-                     <a href="/post/text.html?id=${data.id}">Click here to open blog post</a>
-                </div>
+                <h1>${data.title}</h1>
+                <p>${data.body}</p>
+                <h2>ID number ${data.id}</h2>
+                <img src="${data.media.url}">
+                <a href="/post/text.html?id=${data.id}">Click here to open blog post</a>
             `;
-            blogSection.appendChild(newDiv);
+
+            if (postIndex1 <= 6) {
+                if (postIndex1 === 1) {
+                    const h1Header = document.createElement("h1");
+                    h1Header.textContent = "Carousel 1";
+                    blogSection1.appendChild(h1Header);
+                }
+                blogSection1.appendChild(newDiv);
+                postIndex1++; // Increment placement order for next post in carousel 1
+            } else {
+                if (postIndex2 === 1) {
+                    const h1Header = document.createElement("h1");
+                    h1Header.textContent = "Carousel 2";
+                    blogSection2.appendChild(h1Header);
+                }
+                blogSection2.appendChild(newDiv);
+                postIndex2++; // Increment placement order for next post in carousel 2
+            }
         });
     });
