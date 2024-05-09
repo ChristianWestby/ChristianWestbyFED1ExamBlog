@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rediger eller Slett Post</title>
+    <link rel="stylesheet" href="editpost.css">
+</head>
+<body>
+<div class="container">
+    <h1>Rediger eller Slett Post</h1>
+    <form id="edit-post-form">
+        <!-- Avkryssningsfelt for valg av post å redigere eller slette -->
+        <div class="post-checkbox">
+            <input type="checkbox" id="post1" name="post" value="post1">
+            <label for="post1">Post 1</label>
+        </div>
+        <!-- Her kan du legge til flere avkryssningsfelt for flere poster -->
+
+        <!-- Knapp for å hente valgt post for redigering -->
+        <button type="button" id="edit-post-btn">Rediger Post</button>
+
+        <!-- Knapp for å slette valgt post -->
+        <button type="button" id="delete-post-btn">Slett Post</button>
+
+        <!-- Tilbakeknapp til adminuserpage.html -->
+        <a href="adminuserpage.html" class="back-btn">Tilbake til Adminside</a>
+    </form>
+</div>
+
+<script src="editpost.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Innlogging</title>
+    <link rel="stylesheet" href="login.css"> <!-- Legg til eventuelle CSS-stiler her -->
+    <script src="auth.js" defer></script> <!-- Legg til referanse til auth.js -->
+    <script src="login.js" defer></script> <!-- Legg til referanse til login.js -->
+</head>
+<body>
+<div class="login-container">
+    <h2>Admin Innlogging</h2>
+    <form onsubmit="handleLogin(); return false;">
+        <div class="form-group">
+            <label for="username">Brukernavn:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Passord:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Logg inn</button>
+    </form>
+</div>
+</body>
+</html>
