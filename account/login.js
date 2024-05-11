@@ -1,6 +1,3 @@
-// Steg 7: Feilhåndtering
-// Vi inkluderer feilhåndtering i koden vår for å håndtere situasjoner der API-kallet mislykkes eller hvis responsen indikerer ugyldige legitimasjoner.
-
 // Funksjon for å håndtere innloggingsskjemaet
 function handleLogin() {
     const username = document.getElementById('username').value; // Henter brukernavn fra skjemaet
@@ -38,4 +35,9 @@ function handleLogin() {
 // Kaller login-funksjonen når dokumentet er lastet
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('login-form').addEventListener('submit', handleLogin);
+
+    // Tømmer brukernavnfeltet ved oppdatering av siden
+    document.getElementById('username').value = '';
+    // Tømmer passordfeltet ved oppdatering av siden
+    document.getElementById('password').value = '';
 });

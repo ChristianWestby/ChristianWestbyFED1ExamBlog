@@ -3,23 +3,30 @@ const blogSection1 = document.getElementById("blog-list-1");
 const blogSection2 = document.getElementById("blog-list-2");
 
 // Fetch a single post before fetching the carousels
-fetch("https://v2.api.noroff.dev/blog/posts/Christian_Westby/")
+fetch("https://v2.api.noroff.dev/blog/posts/Christian_Westby")
     .then(response => response.json())
     .then(function appendSinglePost(data) {
-        const singlePostData = data.data[0]; // Fetch the first post
-        const singlePostDiv = document.createElement("div");
-        singlePostDiv.innerHTML = `
-            <h1>${singlePostData.title}</h1>
-            <p>${singlePostData.body}</p>
-            <h2>ID number ${singlePostData.id}</h2>
-            <img src="${singlePostData.media.url}">
-            <a href="/post/text.html?id=${singlePostData.id}">Click here to open blog post</a>
-        `;
-        singlePostSection.appendChild(singlePostDiv);
+        if(data.data.length > 0) {
+            const singlePostData = data.data[0]; // Fetch the first post
+            const singlePostDiv = document.createElement("div");
+            singlePostDiv.innerHTML = `
+                <h1>${singlePostData.title}</h1>
+                <p>${singlePostData.body}</p>
+                <h2>ID number ${singlePostData.id}</h2>
+                ${singlePostData.media ? `<img src="${singlePostData.media.url}">` : ''}
+                <a href="/post/text.html?id=${singlePostData.id}">Click here to open blog post</a>
+            `;
+            singlePostSection.appendChild(singlePostDiv);
+        } else {
+            console.error("No single post found.");
+        }
+    })
+    .catch(error => {
+        console.error("Error fetching single post:", error);
     });
 
 // Fetch the carousels
-fetch("https://v2.api.noroff.dev/blog/posts/Christian_Westby/")
+fetch("https://v2.api.noroff.dev/blog/posts/Christian_Westby")
     .then(response => response.json())
     .then(function appendData(data) {
         const blogData = data.data;
@@ -35,7 +42,7 @@ fetch("https://v2.api.noroff.dev/blog/posts/Christian_Westby/")
                 <h1>${data.title}</h1>
                 <p>${data.body}</p>
                 <h2>ID number ${data.id}</h2>
-                <img src="${data.media.url}">
+                ${data.media ? `<img src="${data.media.url}">` : ''}
                 <a href="/post/text.html?id=${data.id}">Click here to open blog post</a>
             `;
 
@@ -57,4 +64,7 @@ fetch("https://v2.api.noroff.dev/blog/posts/Christian_Westby/")
                 postIndex2++; // Increment placement order for next post in carousel 2
             }
         });
+    })
+    .catch(error => {
+        console.error("Error fetching blog posts:", error);
     });

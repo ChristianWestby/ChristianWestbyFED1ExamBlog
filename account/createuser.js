@@ -10,7 +10,7 @@ function handleCreateUser() {
         password: password
     };
 
-    fetch('https://v2.api.noroff.dev/blog/createuser', { // Sender en fetch()-forespørsel til API-et
+    fetch('https://v2.api.noroff.dev/auth/register', { // Sender en fetch()-forespørsel til API-et
         method: 'POST', // Bruker POST-metoden for å sende data
         headers: {
             'Content-Type': 'application/json' // Setter riktig innholdstype for forespørselen
