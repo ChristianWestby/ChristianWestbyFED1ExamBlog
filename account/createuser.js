@@ -19,7 +19,7 @@ function handleCreateUser() {
     })
         .then(response => {
             if (response.ok) { // Sjekker om responsen er vellykket (statuskode 200-299)
-                window.location.href = 'adminuserpage.html'; // Omdirigerer til administrasjonssiden ved vellykket oppretting av bruker
+                window.location.href = '/account/adminuserpage.html'; // Omdirigerer til administrasjonssiden ved vellykket oppretting av bruker
             } else {
                 throw new Error('Kunne ikke opprette bruker.'); // Kaster en feil hvis oppretting av bruker mislykkes
             }
