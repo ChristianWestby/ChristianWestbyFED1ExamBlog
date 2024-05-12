@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rediger eller Slett Post</title>
     <link rel="stylesheet" href="editpost.css">
+    <script src="editpost.js" defer></script>
 </head>
 <body>
 <div class="container">
     <h1>Rediger eller Slett Post</h1>
     <form id="edit-post-form">
         <!-- Avkryssningsfelt for valg av post å redigere eller slette -->
-        <div class="post-checkbox">
-            <input type="checkbox" id="post1" name="post" value="post1">
-            <label for="post1">Post 1</label>
-        </div>
+        <div id="post-checkbox-container" class="post-checkbox"></div>
         <!-- Her kan du legge til flere avkryssningsfelt for flere poster -->
 
         <!-- Knapp for å hente valgt post for redigering -->
@@ -28,6 +26,7 @@
     </form>
 </div>
 
-<script src="editpost.js"></script>
+
+
 </body>
 </html>

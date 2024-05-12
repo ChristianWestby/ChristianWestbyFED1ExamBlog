@@ -1,10 +1,17 @@
-header {
-    background-color: #333;
+*body {
+    font-family: 'Manrope', sans-serif;
+}
+
+
+.header {
+    background-image: url('post/images/bilde11.jpg');
+    background-color: #444;
     color: #fff;
     padding: 10px 0;
 }
 
 .header-container {
+    /*background-image: url("post/images/bilde11.jpg");*/
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,6 +33,22 @@ header {
     height: auto;
     vertical-align: middle;
 }
+
+
+#hero-box-1 {
+    height: 200px;
+    width: 100px;
+    border: #333333;
+    border-style: solid;
+    background-color: black;
+
+
+}
+
+
+
+
+
 
 @media only screen and (max-width: 600px) {
     .logo img {
