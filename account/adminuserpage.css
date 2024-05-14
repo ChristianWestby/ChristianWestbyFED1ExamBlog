@@ -13,7 +13,7 @@ body {
     max-width: 800px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #eb690c;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -30,12 +30,12 @@ ul {
 
 li {
     margin-bottom: 10px;
-    background-color: black;
+    background-color: rgb(101, 34, 34);
 }
 
 a {
     text-decoration: none;
-    color: #007bff;
+    color: #e0e5ea;
 }
 
 a:hover {

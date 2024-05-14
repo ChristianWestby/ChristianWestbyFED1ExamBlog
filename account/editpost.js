@@ -1,105 +1,180 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ2hyaXN0aWFuX1dlc3RieSIsImVtYWlsIjoiY2hyaXN0aWFuLndlc3RieUBzdHVkLm5vcm9mZi5ubyIsImlhdCI6MTcxNTA4MDg5OH0.mQNsA2l7uUcw1wju125fK4_lJQC8ax1_g_J-QmT0HE8"; // Sett inn ditt autentiseringstoken her
+
     // Fetcher poster fra API-et
     function fetchPosts() {
         fetch('https://v2.api.noroff.dev/blog/posts/Christian_Westby/', {
-            method: 'GET' // Bruk GET-metoden for å hente poster
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${authToken}`
+            }
         })
-            .then(response => response.json())
-            .then(data => {
-                const posts = data.data; // Anta at responsen er en liste med poster
-                const postContainer = document.getElementById('post-checkbox-container');
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Noe gikk galt ved henting av poster');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data hentet:', data);
 
-                // Tøm avkryssningsfeltene før du legger til nye poster
-                postContainer.innerHTML = '';
+            const posts = data.data; // Bruker data.data som posts
+            console.log('Posts:', posts);
 
+            const postContainer = document.getElementById('post-checkbox-container');
+
+            // Tøm avkryssningsfeltene før du legger til nye poster
+            postContainer.innerHTML = '';
+
+            if (Array.isArray(posts)) {
                 // Gå gjennom hver post og opprett et avkryssningsfelt for den
                 posts.forEach(post => {
+                    console.log('Post:', post);
                     const checkbox = document.createElement('input');
                     checkbox.type = 'checkbox';
-                    checkbox.id = `post-${post.id}`; // Bruk postens ID som identifikator
+                    checkbox.id = `post-${post.id}`;
                     checkbox.name = 'post';
-                    checkbox.value = post.id; // Bruk postens ID som verdi
+                    checkbox.value = post.id;
                     const label = document.createElement('label');
                     label.htmlFor = `post-${post.id}`;
-                    label.textContent = post.title; // Anta at tittelen til posten er det du ønsker å vise
+                    label.textContent = post.title;
 
-                    // Legg til avkryssningsfeltet og etiketten i containeren
                     postContainer.appendChild(checkbox);
                     postContainer.appendChild(label);
-                    postContainer.appendChild(document.createElement('br')); // Legg til en linjeskift for å separere elementene
+                    postContainer.appendChild(document.createElement('br'));
                 });
-            })
-            .catch(error => {
-                console.error('Feil ved henting av poster:', error);
-            });
+            } else {
+                console.error('Posts er ikke en liste:', posts);
+            }
+        })
+        .catch(error => {
+            console.error('Feil ved henting av poster:', error);
+        });
     }
 
-    // Lytter etter klikk på "Rediger Post" -knappen
-    document.getElementById('edit-post-btn').addEventListener('click', () => {
-        // Henter valgt post-ID fra det avkryssningsfeltet som er avkrysset
-        const selectedPostId = document.querySelector('input[name="post"]:checked').value;
-        console.log('Valgt post-ID for redigering:', selectedPostId);
+    // Funksjon for å hente den avkryssede posten for redigering
+    function fetchSelectedPostForEditing() {
+        const selectedPostCheckbox = document.querySelector('input[name="post"]:checked');
 
-        // Henter postinformasjon basert på post-ID-en og fyller inn skjemaet med denne informasjonen
-        fetch(`https://v2.api.noroff.dev/blog/posts/Christian_Westby/${selectedPostId}`)
-            .then(response => response.json())
+        if (selectedPostCheckbox) {
+            const selectedPostId = selectedPostCheckbox.value;
+            console.log('Valgt post-ID for redigering:', selectedPostId);
+
+            fetch(`https://v2.api.noroff.dev/blog/posts/Christian_Westby/${selectedPostId}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${authToken}`
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Feil ved henting av post for redigering');
+                }
+                return response.json();
+            })
             .then(post => {
-                // Fyller inn skjemaet med postens tittel og innhold
-                document.getElementById('updated-title').value = post.title;
-                document.getElementById('updated-content').value = post.content;
+                console.log('Post hentet for redigering:', post);
+                
+                const postData = post.data; // Bruker post.data for å få tilgang til postens faktiske data
+                console.log('Post Data:', postData);
+
+                // Fyller inn skjemaet med postens tittel, forfatter, innhold og bilde-URL
+                document.getElementById('updated-title').value = postData.title || '';
+                document.getElementById('updated-author').value = postData.author.name || '';
+                document.getElementById('updated-content').value = postData.body || '';
+                document.getElementById('edit-image-url').value = postData.media ? postData.media.url : '';
+
+                // Åpne redigeringsvinduet
+                document.getElementById('edit-modal').style.display = 'block';
             })
             .catch(error => {
                 console.error('Feil ved henting av post for redigering:', error);
             });
-    });
+        } else {
+            console.log('Ingen post er valgt for redigering');
+        }
+    }
 
-    // Lytter etter innsending av skjemaet for redigering av post
-    document.getElementById('edit-post-form').addEventListener('submit', event => {
-        event.preventDefault(); // Forhindrer standard skjema-innsending
+    // Funksjon for å oppdatere posten
+    function updatePost(event) {
+        event.preventDefault();
 
-        // Henter valgt post-ID fra det skjulte input-feltet
-        const selectedPostId = document.getElementById('selected-post-id').value;
-        console.log('Valgt post-ID for redigering:', selectedPostId);
-
-        // Henter redigeringsdata fra skjemaet
+        const selectedPostId = document.querySelector('input[name="post"]:checked').value;
         const updatedTitle = document.getElementById('updated-title').value;
+        const updatedAuthor = document.getElementById('updated-author').value;
         const updatedContent = document.getElementById('updated-content').value;
+        const updatedImageUrl = document.getElementById('edit-image-url').value;
 
-        // Implementer PUT-metoden for å oppdatere posten basert på post-ID-en og redigeringsdataene
+        const updatedPostData = {
+            title: updatedTitle,
+            body: updatedContent,
+            media: { url: updatedImageUrl }
+        };
+
+        console.log('Oppdaterer post:', updatedPostData);
+
         fetch(`https://v2.api.noroff.dev/blog/posts/Christian_Westby/${selectedPostId}`, {
-            method: 'PUT', // Bruk PUT-metoden for å oppdatere posten
+            method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authToken}`
             },
-            body: JSON.stringify({
-                title: updatedTitle,
-                content: updatedContent
-            })
+            body: JSON.stringify(updatedPostData)
         })
-            .then(response => {
-                if (response.ok) {
-                    console.log('Posten ble oppdatert vellykket!');
-                    // Implementer eventuell videre håndtering etter oppdatering av posten
-                } else {
-                    throw new Error('Feil ved oppdatering av posten');
-                }
-            })
-            .catch(error => {
-                console.error('Feil ved oppdatering av posten:', error);
-            });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Feil ved oppdatering av posten');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Post oppdatert:', data);
+            document.getElementById('edit-modal').style.display = 'none';
+            fetchPosts();
+        })
+        .catch(error => {
+            console.error('Feil ved oppdatering av posten:', error);
+        });
+    }
+
+    // Funksjon for å slette posten
+    function deletePost() {
+        const selectedPostCheckbox = document.querySelector('input[name="post"]:checked');
+        if (!selectedPostCheckbox) {
+            console.log('Ingen post valgt for sletting');
+            return;
+        }
+
+        const selectedPostId = selectedPostCheckbox.value;
+        console.log('Sletter post-ID:', selectedPostId);
+
+        fetch(`https://v2.api.noroff.dev/blog/posts/Christian_Westby/${selectedPostId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${authToken}`
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Feil ved sletting av posten');
+            }
+            console.log('Post slettet:', selectedPostId);
+            // Oppdater postlisten etter sletting
+            fetchPosts();
+            // Oppdater siden etter sletting
+            location.reload(); // Denne linjen vil laste siden på nytt
+        })
+        .catch(error => {
+            console.error('Feil ved sletting av posten:', error);
+        });
+    }
+
+    document.getElementById('edit-post-btn').addEventListener('click', fetchSelectedPostForEditing);
+    document.getElementById('edit-post-form').addEventListener('submit', updatePost);
+    document.getElementById('delete-post-btn').addEventListener('click', deletePost);
+    document.querySelector('.close').addEventListener('click', () => {
+        document.getElementById('edit-modal').style.display = 'none';
     });
 
-    // Lytter etter innsending av skjemaet for sletting av post
-    document.getElementById('delete-post-btn').addEventListener('submit', event => {
-        event.preventDefault(); // Forhindrer standard skjema-innsending
-
-        // Henter valgt post-ID fra det skjulte input-feltet
-        const selectedPostId = document.getElementById('selected-post-id').value;
-        console.log('Valgt post-ID for sletting:', selectedPostId);
-
-        // Implementer logikken for sletting av post basert på post-ID-en
-    });
-
-    // Kaller funksjonen for å hente poster når siden lastes
     fetchPosts();
 });
