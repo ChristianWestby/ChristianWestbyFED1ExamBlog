@@ -105,13 +105,21 @@ document.addEventListener('DOMContentLoaded', function () {
         const updatedContent = document.getElementById('updated-content').value;
         const updatedImageUrl = document.getElementById('edit-image-url').value;
 
+        console.log('Oppdatert tittel:', updatedTitle);
+        console.log('Oppdatert forfatter:', updatedAuthor);
+        console.log('Oppdatert innhold:', updatedContent);
+        console.log('Oppdatert bilde-URL:', updatedImageUrl);
+
         const updatedPostData = {
             title: updatedTitle,
             body: updatedContent,
-            media: { url: updatedImageUrl }
+            tags: [],
+            media: updatedImageUrl ? { url: updatedImageUrl, alt: "" } : null,
+            author: { name: updatedAuthor }
         };
 
-        console.log('Oppdaterer post:', updatedPostData);
+        console.log('Oppdaterer post med ID:', selectedPostId);
+        console.log('Oppdaterer post med data:', JSON.stringify(updatedPostData));
 
         fetch(`https://v2.api.noroff.dev/blog/posts/Christian_Westby/${selectedPostId}`, {
             method: 'PUT',
@@ -123,14 +131,14 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Feil ved oppdatering av posten');
+                return response.json().then(err => { throw new Error(err.message); });
             }
             return response.json();
         })
         .then(data => {
             console.log('Post oppdatert:', data);
             document.getElementById('edit-modal').style.display = 'none';
-            fetchPosts();
+            fetchPosts(); // Oppdater postlisten etter oppdatering
         })
         .catch(error => {
             console.error('Feil ved oppdatering av posten:', error);
@@ -161,8 +169,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('Post slettet:', selectedPostId);
             // Oppdater postlisten etter sletting
             fetchPosts();
-            // Oppdater siden etter sletting
-            location.reload(); // Denne linjen vil laste siden på nytt
         })
         .catch(error => {
             console.error('Feil ved sletting av posten:', error);
@@ -170,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.getElementById('edit-post-btn').addEventListener('click', fetchSelectedPostForEditing);
-    document.getElementById('edit-post-form').addEventListener('submit', updatePost);
+    document.getElementById('update-post-form').addEventListener('submit', updatePost);
     document.getElementById('delete-post-btn').addEventListener('click', deletePost);
     document.querySelector('.close').addEventListener('click', () => {
         document.getElementById('edit-modal').style.display = 'none';
