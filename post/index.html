@@ -12,34 +12,54 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <img src="logo.png" alt="The Blog Spot">
-            </div>
-            <div class="header-icons">
-                <button id="menu-button" aria-label="Menu">
-                    <img src="menu-icon.png" alt="Menu">
-                </button>
-                <button id="search-button" aria-label="Search">
-                    <span class="material-symbols-outlined"></span>
-                </button>
+                <h1>THE BLOG SPOT</h1>
+                <p>Embrace the Inspiration: Writing Your Blog Amidst Spectacular Scenery - <span>Admin</span></p>
             </div>
         </div>
     </header>
-
+    <div class="break-line-1"></div>
     <hero id="hero-container">
-        <hero-box1 id="hero-box-1">
-            <p>Embark on a journey beyond the confines of conventional writing spaces.
-               Imagine a scenario where every stroke of your pen or tap of your keyboard is accompanied by the symphony of nature,
-               where every word finds its muse in the breathtaking landscapes that unfold before your eyes.
-               Welcome to the realm of outdoor blogging, where the great outdoors become your ultimate writing companion.</p>
-        </hero-box1>
-        <hero-box2 id="hero-box-2">
-
-        </hero-box2>
+        <div id="hero-box-1">
+            <p>"Embark on a journey beyond the confines of conventional writing spaces.
+                Imagine a scenario where every stroke of your pen or tap of your keyboard is accompanied by the symphony of nature,
+                where every word finds its muse in the breathtaking landscapes that unfold before your eyes.
+                Welcome to the realm of outdoor blogging, where the great outdoors become your ultimate writing companion."</p>
+        </div>
+        <div id="hero-box-2">
+            <img src="https://s3-alpha-sig.figma.com/img/ec21/83e2/03ad814be2b99f961f477e1ad0db86f9?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=doEp~44Y9ROQD-xKuckwPDP~Vt5lGfQ4FELVh1dDhMSGSFew2yVo8Pm2h3t7hM0qeuxzWkMsbQArHiYwVa61dxJmm9Hn3mSE9qxL~hrbxKNWLxcHNPaoI~EbPA7Enyyfy6JxuqUe4ode7ECbdG1Hbh5xN9213Oh-YRc5jNr0orHX1Wrh0V1M6GtuJa-0q4jlN-UJ4G7z0z2Q82-KsjwpB35dqpTUpb2ptLxkyMF5hNdHEMAyqAVivYR69AHxd4l-8ZXYj3fJX1dmKy1f8va-E-3SZi9BlDnaJ~s~Sz7LekNBHeUqmp2UJPyUiQw6AINsRQ316OjR~0nDp0kWQJFjCA__" alt="Hero Image">
+        </div>
     </hero>
-    <section id="single-post"></section>
-    <section id="blog-list-1"></section>
-    <section id="blog-list-2"></section>
+
+    <div class="break-line"></div>
+
+    <div id="admin-post-of-the-day">ADMIN POST OF THE DAY</div>
+
+    <div class="break-line-2"></div>
+
+    <section id="single-post">
+        <div class="single-post-content">
+            <h3>Single Post Title</h3>
+            <p>Single post content fetched from API will appear here...</p>
+        </div>
+    </section>
+
+    <section id="blog-list-1" class="carousel-1">
+        <button class="carousel-button" id="prev-btn-1">‹</button>
+        <div class="carousel-inner">
+            <!-- Blog posts will be dynamically inserted here -->
+        </div>
+        <button class="carousel-button" id="next-btn-1">›</button>
+    </section>
+
+    <section id="blog-list-2" class="carousel-2">
+        <button class="carousel-button" id="prev-btn-2">‹</button>
+        <div class="carousel-inner">
+            <!-- Blog posts will be dynamically inserted here -->
+        </div>
+        <button class="carousel-button" id="next-btn-2">›</button>
+    </section>
 </main>
+
 <footer>
     <div class="footer-container">
         <div class="social-links">
