@@ -3,66 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>The Blog Spot</title>
-    <link rel="stylesheet" href="main.css">
-    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="main.css"> <!-- Lenker til hovedstilarket -->
+    <script src="main.js" defer></script> <!-- Lenker til hovedskriptet -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 </head>
 <body>
 <main>
     <header>
-        <div class="header-container">
-            <div class="logo">
+        <div class="header-container"> <!-- Container for header-innhold -->
+            <div class="header-image">
+                <img src="https://i.ibb.co/vdcZv8v/image.png" alt="Hero Image"> <!-- Bildet for headeren -->
+            </div>
+            <div class="logo"> <!-- Logo og tekst -->
                 <h1>THE BLOG SPOT</h1>
-                <p>Embrace the Inspiration: Writing Your Blog Amidst Spectacular Scenery - <span>Admin</span></p>
+                <hr style="border: 1px solid #fff; width: 60%;"> <!-- Break line mellom logo og tekst -->
+                <p>Embrace the Inspiration: Writing Your Blog Amidst Spectacular Scenery - </p>
+                <p class="admin">Admin</p>
             </div>
         </div>
     </header>
-    <div class="break-line-1"></div>
-    <hero id="hero-container">
-        <div id="hero-box-1">
-            <p>"Embark on a journey beyond the confines of conventional writing spaces.
-                Imagine a scenario where every stroke of your pen or tap of your keyboard is accompanied by the symphony of nature,
-                where every word finds its muse in the breathtaking landscapes that unfold before your eyes.
-                Welcome to the realm of outdoor blogging, where the great outdoors become your ultimate writing companion."</p>
+
+    <div id="hero-wrapper"> <!-- Ny wrapper container -->
+        <div id="hero-container"> <!-- Container for hero-seksjonen -->
+            <div id="hero-box-1">
+                <h2>#Imagine</h2>
+                <p>Embark on a journey beyond the confines of conventional writing spaces. Imagine a scenario where every stroke of your pen or tap of your keyboard is accompanied by the symphony of nature, where every word finds its muse in the breathtaking landscapes that unfold before your eyes. Welcome to the realm of outdoor blogging, where the great outdoors become your ultimate writing companion.</p>
+                <p class="admin">Admin</p>
+            </div>
+            <div id="hero-box-2"></div> <!-- Tom boks for hero-seksjonen -->
         </div>
-        <div id="hero-box-2">
-            <img src="https://s3-alpha-sig.figma.com/img/ec21/83e2/03ad814be2b99f961f477e1ad0db86f9?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=doEp~44Y9ROQD-xKuckwPDP~Vt5lGfQ4FELVh1dDhMSGSFew2yVo8Pm2h3t7hM0qeuxzWkMsbQArHiYwVa61dxJmm9Hn3mSE9qxL~hrbxKNWLxcHNPaoI~EbPA7Enyyfy6JxuqUe4ode7ECbdG1Hbh5xN9213Oh-YRc5jNr0orHX1Wrh0V1M6GtuJa-0q4jlN-UJ4G7z0z2Q82-KsjwpB35dqpTUpb2ptLxkyMF5hNdHEMAyqAVivYR69AHxd4l-8ZXYj3fJX1dmKy1f8va-E-3SZi9BlDnaJ~s~Sz7LekNBHeUqmp2UJPyUiQw6AINsRQ316OjR~0nDp0kWQJFjCA__" alt="Hero Image">
-        </div>
-    </hero>
+    </div>
 
-    <div class="break-line"></div>
-
-    <div id="admin-post-of-the-day">ADMIN POST OF THE DAY</div>
-
-    <div class="break-line-2"></div>
-
-    <section id="single-post">
-        <div class="single-post-content">
-            <h3>Single Post Title</h3>
-            <p>Single post content fetched from API will appear here...</p>
-        </div>
+    <!-- Ny Admin Post Seksjon -->
+    <section id="admin-post">
+        <hr> <!-- Øvre skillelinje -->
+        <div class="admin-post-content">ADMIN POST OF THE DAY</div> <!-- Innhold for admin-innlegg -->
+        <hr> <!-- Nedre skillelinje -->
     </section>
 
-    <section id="blog-list-1" class="carousel-1">
-        <button class="carousel-button" id="prev-btn-1">‹</button>
-        <div class="carousel-inner">
-            <!-- Blog posts will be dynamically inserted here -->
-        </div>
-        <button class="carousel-button" id="next-btn-1">›</button>
-    </section>
-
-    <section id="blog-list-2" class="carousel-2">
-        <button class="carousel-button" id="prev-btn-2">‹</button>
-        <div class="carousel-inner">
-            <!-- Blog posts will be dynamically inserted here -->
-        </div>
-        <button class="carousel-button" id="next-btn-2">›</button>
-    </section>
+    <section id="single-post"></section> <!-- Seksjon for enkeltinnlegg -->
+    <section id="blog-list-1"></section> <!-- Seksjon for blogginnlegg liste 1 -->
+    <section id="blog-list-2"></section> <!-- Seksjon for blogginnlegg liste 2 -->
 </main>
-
 <footer>
-    <div class="footer-container">
-        <div class="social-links">
+    <div class="footer-container"> <!-- Container for footer-innhold -->
+        <div class="social-links"> <!-- Sosiale lenker -->
             <a href="https://www.facebook.com"><img src="facebook-icon.png" alt="Facebook"></a>
             <a href="https://www.instagram.com"><img src="instagram-icon.png" alt="Instagram"></a>
             <a href="https://www.twitter.com"><img src="twitter-icon.png" alt="Twitter"></a>

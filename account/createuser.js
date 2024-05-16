@@ -5,7 +5,7 @@ function handleCreateUser() {
     const password = document.getElementById('password').value; // Henter passord fra skjemaet
 
     const userData = { // Oppretter et objekt med brukernavn, e-post og passord
-        username: username,
+        name: username,
         email: email,
         password: password
     };
@@ -21,7 +21,9 @@ function handleCreateUser() {
             if (response.ok) { // Sjekker om responsen er vellykket (statuskode 200-299)
                 window.location.href = '/account/adminuserpage.html'; // Omdirigerer til administrasjonssiden ved vellykket oppretting av bruker
             } else {
-                throw new Error('Kunne ikke opprette bruker.'); // Kaster en feil hvis oppretting av bruker mislykkes
+                return response.json().then(data => {
+                    throw new Error(data.message || 'Kunne ikke opprette bruker.'); // Kaster en feil hvis oppretting av bruker mislykkes
+                });
             }
         })
         .catch(error => {

@@ -1,184 +1,170 @@
 body {
-    font-family: 'Manrope', sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: 'Manrope', sans-serif; /* Angir skriftfamilie for hele nettsiden */
 }
 
 .header-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 20px;
-    background: url('https://s3-alpha-sig.figma.com/img/5d7e/60b9/a5c19276d5aba9883d9eb4002fb702b5?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=AGEFhXc7XBaf4zyZ80j41ty9rATpTcNst8VKqbZRUwQw~ItB74Yl1QZnrUuRMIbqW3l8vEiqgtgAwOtMLepp2ompQwDXr6aWXUwWRfgzQEkbM8CUsYU4HZBGbwouJ2iYqQbe~feA1MMwroWgr9RqdJNrN6NoL2aDd1rzFhnjfkut0WrmoP~D5yNRxwr1g9wUePHdVnBqxsufow0lgI2EJVjktCPlb3WDDnVzyPmpNKR005vt1Kq9aF-aRvWIcbNcpcBxgaUkR44LKXPWPLAFfLLVaf1Dh8FZAzdYFm-4cYtRdz60wTtNrPD1bvkiddz9BFUlHJbv0HYbXF0WsKwKLw__') center/cover no-repeat;
-    color: white;
-    height: 300px;
-    position: relative;
-    filter: brightness(40%);
+    position: relative; /* Gjør at innholdet kan plasseres i forhold til hverandre */
+    width: 100%; /* Setter bredden til 100% av foreldreelementet */
 }
 
-.header-container .logo h1 {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 3em;
-    margin: 0;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-family: "Manrope", sans-serif;
+.header-image img {
+    width: 100%; /* Bildet skal dekke hele bredden av foreldreelementet */
+    height: auto; /* Bevarer bildets proporsjoner */
+    opacity: 1.3; /* Setter gjennomsiktigheten til 30% for å gjøre bildet mørkere */
 }
 
-.header-container .logo p {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0;
-    font-size: 1em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    word-wrap: normal;
+.logo {
+    position: absolute; /* Gjør at elementet kan plasseres nøyaktig der vi vil */
+    top: 35%; /* Plasserer elementet 35% fra toppen av foreldreelementet */
+    left: 50%; /* Plasserer elementet midt på venstre/høyre akse */
+    transform: translate(-50%, -50%); /* Justerer for å sentrere elementet */
+    text-align: center; /* Sentraljusterer teksten */
+    color: #fff; /* Setter tekstfargen til hvit */
+    margin-bottom: 10px; /* Legger til margin under logoen */
 }
 
-.header-container .logo p span {
-    font-family: 'Marck Script', cursive;
-    text-decoration: underline;
+.logo h1 {
+    font-size: 2em; /* Setter fontstørrelsen til 2em */
+    margin: 0; /* Fjerner margin */
 }
-.break-line-1 {
-    border-top: 2px solid rgb(6, 6, 6);
-    margin: 10px 0;
-    line-break: 20px;
+
+.logo hr {
+    margin: 30px auto; /* Legger til margin over og under hr, og sentrerer den */
+}
+
+.logo p {
+    font-size: 1em; /* Setter fontstørrelsen til 1em */
+    margin: 0; /* Fjerner margin */
+}
+
+.admin {
+    font-family: 'Marck Script', cursive; /* Angir en annen skrift for "Admin" */
+    text-decoration: underline; /* Understreker teksten */
+    margin-top: 30px; /* Legger til margin over teksten */
+    display: block; /* Plasserer elementet på egen linje */
+}
+
+#hero-wrapper {
+    border: 1px solid black; /* Legger til en tynn svart ramme rundt hero-wrapper */
+    margin: 5px auto; /* Legger til margin rundt hero-wrapper og sentrerer den */
+    padding: 5px; /* Legger til padding inni hero-wrapper */
+    width: 411px; /* Setter bredden til 411px */
 }
 
 #hero-container {
-    border: 1px black solid;
-    display: flex;
-    justify-content: space-between;
-    padding: 5px;
-    margin-bottom: 5px;
+    display: flex; /* Bruker flexbox for å ordne innholdet */
+    justify-content: space-between; /* Legger mellomrom mellom elementene */
+    padding: 20px; /* Legger til padding rundt containeren */
+}
+
+#hero-box-1, #hero-box-2 {
+    flex: 1; /* Gjør at elementene tar opp like mye plass */
+    height: 400px; /* Setter høyden til 400px */
+    margin: 0 10px; /* Legger til margin på sidene */
 }
 
 #hero-box-1 {
-    flex: 1;
-    padding: 20px;
-    background-color: black;
-    color: white;
-    margin-right: 20px;
-    border: 1px solid black;
-    white-space: 5px;
+    padding: 20px; /* Legger til padding rundt innholdet */
+    background-color: black; /* Setter bakgrunnsfarge til svart */
+    color: white; /* Setter tekstfargen til hvit */
+    border: 1px solid black; /* Legger til en tynn svart ramme */
 }
 
-#hero-box-2 img {
-    width: 100%;
-    height: auto;
+#hero-box-2 {
+    background: url('https://s3-alpha-sig.figma.com/img/ec21/83e2/03ad814be2b99f961f477e1ad0db86f9?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=doEp~44Y9ROQD-xKuckwPDP~Vt5lGfQ4FELVh1dDhMSGSFew2yVo8Pm2h3t7hM0qeuxzWkMsbQArHiYwVa61dxJmm9Hn3mSE9qxL~hrbxKNWLxcHNPaoI~EbPA7Enyyfy6JxuqUe4ode7ECbdG1Hbh5xN9213Oh-YRc5jNr0orHX1Wrh0V1M6GtuJa-0q4jlN-UJ4G7z0z2Q82-KsjwpB35dqpTUpb2ptLxkyMF5hNdHEMAyqAVivYR69AHxd4l-8ZXYj3fJX1dmKy1f8va-E-3SZi9BlDnaJ~s~Sz7LekNBHeUqmp2UJPyUiQw6AINsRQ316OjR~0nDp0kWQJFjCA__') no-repeat center center; /* Angir bakgrunnsbilde og justerer posisjonen */
+    background-size: cover; /* Dekker hele elementet med bildet */
+    border: 1px solid black; /* Legger til en tynn svart ramme */
 }
 
-.break-line-2 {
-    border-top: 2px solid white;
-    margin: 20px 0;
+#admin-post {
+    text-align: center; /* Sentraljusterer teksten */
+    margin: 20px 0; /* Legger til margin over og under seksjonen */
 }
 
-#admin-post-of-the-day {
-    background-color: black;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    border: 1px solid rgb(82, 35, 35);
-    box-sizing: border-box;
-    font-size: 1em;
-    text-transform: uppercase;
-    margin: 15px auto;
-    width: fit-content;
+#admin-post hr {
+    border: 1px solid black; /* Setter en svart ramme for skillelinjene */
 }
 
-#single-post {
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    padding: 20px 0;
+.admin-post-content {
+    display: inline-block; /* Gjør at innholdet vises på linje */
+    padding: 10px 20px; /* Legger til padding rundt innholdet */
+    background-color: black; /* Setter bakgrunnsfargen til svart */
+    color: white; /* Setter tekstfargen til hvit */
+    font-size: 1.2em; /* Setter fontstørrelsen til 1.2em */
+    border: 2px solid white; /* Legger til en hvit ramme */
 }
 
-.single-post-content {
-    background-color: black;
-    color: white;
-    padding: 20px;
-    border: 1px solid black;
-    margin: 20px;
-    text-align: center;
-}
-
-.single-post-content h3 {
-    margin-top: 0;
-}
-
-.carousel-1, .carousel-2 {
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-}
-
-.carousel-inner {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-item {
-    transition: transform 0.5s ease-in-out;
-    cursor: pointer;
-    border: 1px solid transparent;
-}
-
-.carousel-item:hover {
-    border-color: black;
-}
-
-.carousel-button {
-    background-color: black;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.footer-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #333;
-    color: white;
-    padding: 20px 0;
-}
-
-.social-links a {
-    margin: 0 10px;
-}
-
-.index-link a {
-    color: white;
-    text-decoration: none;
-    margin-bottom: 10px;
-}
-
-.index-link a:hover {
-    text-decoration: underline;
-}
-
-.copyright {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-@media only screen and (max-width: 768px) {
+/* Media Query for devices up to 834px */
+@media (max-width: 834px) {
     #hero-container {
-        flex-direction: column;
+        flex-direction: column; /* Endrer retning på flex-boksen til kolonne */
     }
 
     #hero-box-1, #hero-box-2 {
-        margin-right: 0;
+        margin: 10px 0; /* Legger til margin over og under elementene */
+        height: auto; /* Sett høyden til auto for å passe innholdet */
     }
 
-    #single-post .single-post-content img {
-        width: 100%;
+    #hero-box-2 {
+        background: none; /* Fjern eksisterende bakgrunn */
+        height: auto; /* Sett høyden til auto for å passe innholdet */
     }
+
+    #hero-box-2::before {
+        content: ''; /* Legger til et pseudo-element */
+        display: block; /* Viser elementet som en blokk */
+        background: url('https://s3-alpha-sig.figma.com/img/ec21/83e2/03ad814be2b99f961f477e1ad0db86f9?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=doEp~44Y9ROQD-xKuckwPDP~Vt5lGfQ4FELVh1dDhMSGSFew2yVo8Pm2h3t7hM0qeuxzWkMsbQArHiYwVa61dxJmm9Hn3mSE9qxL~hrbxKNWLxcHNPaoI~EbPA7Enyyfy6JxuqUe4ode7ECbdG1Hbh5xN9213Oh-YRc5jNr0orHX1Wrh0V1M6GtuJa-0q4jlN-UJ4G7z0z2Q82-KsjwpB35dqpTUpb2ptLxkyMF5hNdHEMAyqAVivYR69AHxd4l-8ZXYj3fJX1dmKy1f8va-E-3SZi9BlDnaJ~s~Sz7LekNBHeUqmp2UJPyUiQw6AINsRQ316OjR~0nDp0kWQJFjCA__') no-repeat center center; /* Angir bakgrunnsbilde og justerer posisjonen */
+        background-size: cover; /* Dekker hele elementet med bildet */
+        height: 300px; /* Sett en fast høyde for å sikre at bildet vises */
+    }
+}
+
+footer {
+    background-color: #333; /* Setter bakgrunnsfargen til mørk grå */
+    color: #fff; /* Setter tekstfargen til hvit */
+    padding: 20px 0; /* Legger til padding over og under innholdet */
+    text-align: center; /* Sentrerer teksten */
+}
+
+.footer-container {
+    display: flex; /* Bruker flexbox for å ordne innholdet */
+    flex-direction: column; /* Viser elementene i en kolonne */
+    align-items: center; /* Sentrerer elementene horisontalt */
+}
+
+.social-links {
+    margin-bottom: 10px; /* Legger til margin under elementet */
+}
+
+.social-links a {
+    display: inline-block; /* Gjør at elementene vises på linje */
+    margin: 0 10px; /* Legger til margin på sidene av elementene */
+}
+
+.social-links img {
+    width: 30px; /* Setter bredden til 30px */
+    height: 30px; /* Setter høyden til 30px */
+}
+
+.index-link {
+    margin-bottom: 10px; /* Legger til margin under elementet */
+}
+
+.index-link a {
+    color: #fff; /* Setter tekstfargen til hvit */
+    text-decoration: none; /* Fjerner understrekning */
+}
+
+.index-link a:hover {
+    text-decoration: underline; /* Legger til understrekning ved hover */
+}
+
+.copyright {
+    display: flex; /* Bruker flexbox for å ordne innholdet */
+    justify-content: space-between; /* Fordeler elementene med like mye plass mellom dem */
+    align-items: center; /* Sentrerer elementene vertikalt */
+}
+
+copyright p {
+    margin: 0; /* Fjerner margin */
 }
