@@ -3,54 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>The Blog Spot</title>
-    <link rel="stylesheet" href="main.css"> <!-- Lenker til hovedstilarket -->
-    <script src="main.js" defer></script> <!-- Lenker til hovedskriptet -->
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js" defer></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 </head>
 <body>
 <main>
     <header>
-        <div class="header-container"> <!-- Container for header-innhold -->
+        <div class="header-container">
             <div class="header-image">
-                <img src="https://i.ibb.co/vdcZv8v/image.png" alt="Hero Image"> <!-- Bildet for headeren -->
+                <img src="https://i.ibb.co/vdcZv8v/image.png" alt="Hero Image">
             </div>
-            <div class="logo"> <!-- Logo og tekst -->
+            <div class="logo">
                 <h1>THE BLOG SPOT</h1>
-                <hr style="border: 1px solid #fff; width: 60%;"> <!-- Break line mellom logo og tekst -->
+                <hr style="border: 1px solid #fff; width: 60%;">
                 <p>Embrace the Inspiration: Writing Your Blog Amidst Spectacular Scenery - </p>
                 <p class="admin">Admin</p>
             </div>
         </div>
     </header>
 
-    <div id="hero-wrapper"> <!-- Ny wrapper container -->
-        <div id="hero-container"> <!-- Container for hero-seksjonen -->
+    <div id="hero-wrapper">
+        <div id="hero-container">
             <div id="hero-box-1">
                 <h2>#Imagine</h2>
-                <p>Embark on a journey beyond the confines of conventional writing spaces. Imagine a scenario where every stroke of your pen or tap of your keyboard is accompanied by the symphony of nature, where every word finds its muse in the breathtaking landscapes that unfold before your eyes. Welcome to the realm of outdoor blogging, where the great outdoors become your ultimate writing companion.</p>
+                <p>Embark on a journey beyond the confines of conventional writing spaces...</p>
                 <p class="admin">Admin</p>
             </div>
-            <div id="hero-box-2"></div> <!-- Tom boks for hero-seksjonen -->
+            <div id="hero-box-2"></div>
         </div>
     </div>
 
-    <!-- Ny Admin Post Seksjon -->
     <section id="admin-post">
-        <hr> <!-- Øvre skillelinje -->
-        <div class="admin-post-content">ADMIN POST OF THE DAY</div> <!-- Innhold for admin-innlegg -->
-        <hr> <!-- Nedre skillelinje -->
+        <hr>
+        <div class="admin-post-content">ADMIN POST OF THE DAY</div>
+        <hr>
     </section>
 
-    <section id="single-post"></section> <!-- Seksjon for enkeltinnlegg -->
-    <section id="blog-list-1"></section> <!-- Seksjon for blogginnlegg liste 1 -->
-    <section id="blog-list-2"></section> <!-- Seksjon for blogginnlegg liste 2 -->
+    <section id="single-post"></section>
+
+    <section id="blog-list-carousel" class="carousel">
+        <button class="prev-btn" id="prev-btn">◀</button>
+        <div class="carousel-inner" id="carousel-inner"></div>
+        <button class="next-btn" id="next-btn">▶</button>
+    </section>
+
+    <h2 id="see-more"># See more...</h2>
+    <section id="blog-list-grid">
+        <div class="grid-container" id="grid-container"></div>
+    </section>
+
+    <section id="blog-list-2">
+        <div class="blog-list-row" id="blog-list-row-1"></div>
+        <div class="blog-list-row" id="blog-list-row-2"></div>
+    </section>
 </main>
 <footer>
-    <div class="footer-container"> <!-- Container for footer-innhold -->
-        <div class="social-links"> <!-- Sosiale lenker -->
-            <a href="https://www.facebook.com"><img src="facebook-icon.png" alt="Facebook"></a>
-            <a href="https://www.instagram.com"><img src="instagram-icon.png" alt="Instagram"></a>
-            <a href="https://www.twitter.com"><img src="twitter-icon.png" alt="Twitter"></a>
+    <div class="footer-container">
+        <div class="social-links">
+            <a href="https://www.facebook.com" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a>
+            <a href="https://www.instagram.com" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
+            <a href="https://www.twitter.com" target="_blank"><img src="twitter-icon.png" alt="Twitter"></a>
         </div>
         <div class="index-link">
             <a href="index.html">Home</a>

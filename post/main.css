@@ -1,170 +1,292 @@
 body {
-    font-family: 'Manrope', sans-serif; /* Angir skriftfamilie for hele nettsiden */
+    font-family: 'Manrope', sans-serif; /* Setter font-familie for hele siden */
 }
 
 .header-container {
-    position: relative; /* Gjør at innholdet kan plasseres i forhold til hverandre */
-    width: 100%; /* Setter bredden til 100% av foreldreelementet */
+    position: relative;
+    width: 100%; /* Setter bredde til 100% */
 }
 
 .header-image img {
-    width: 100%; /* Bildet skal dekke hele bredden av foreldreelementet */
-    height: auto; /* Bevarer bildets proporsjoner */
-    opacity: 1.3; /* Setter gjennomsiktigheten til 30% for å gjøre bildet mørkere */
+    width: 100%;
+    height: auto;
+    opacity: 1.3; /* Justert opacity for header-bildet */
 }
 
 .logo {
-    position: absolute; /* Gjør at elementet kan plasseres nøyaktig der vi vil */
-    top: 35%; /* Plasserer elementet 35% fra toppen av foreldreelementet */
-    left: 50%; /* Plasserer elementet midt på venstre/høyre akse */
-    transform: translate(-50%, -50%); /* Justerer for å sentrere elementet */
-    text-align: center; /* Sentraljusterer teksten */
-    color: #fff; /* Setter tekstfargen til hvit */
-    margin-bottom: 10px; /* Legger til margin under logoen */
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    margin-bottom: 10px; /* Setter margin nederst */
 }
 
 .logo h1 {
-    font-size: 2em; /* Setter fontstørrelsen til 2em */
-    margin: 0; /* Fjerner margin */
+    font-size: 2em; /* Setter font-størrelse for logo-tekst */
+    margin: 0;
 }
 
 .logo hr {
-    margin: 30px auto; /* Legger til margin over og under hr, og sentrerer den */
+    margin: 30px auto; /* Setter margin for hr-elementet */
 }
 
 .logo p {
-    font-size: 1em; /* Setter fontstørrelsen til 1em */
-    margin: 0; /* Fjerner margin */
+    font-size: 1em; /* Setter font-størrelse for logo-paragraf */
+    margin: 0;
 }
 
 .admin {
-    font-family: 'Marck Script', cursive; /* Angir en annen skrift for "Admin" */
-    text-decoration: underline; /* Understreker teksten */
-    margin-top: 30px; /* Legger til margin over teksten */
-    display: block; /* Plasserer elementet på egen linje */
+    font-family: 'Marck Script', cursive;
+    text-decoration: underline;
+    margin-top: 30px;
+    display: block; /* Viser elementet som blokk */
 }
 
 #hero-wrapper {
-    border: 1px solid black; /* Legger til en tynn svart ramme rundt hero-wrapper */
-    margin: 5px auto; /* Legger til margin rundt hero-wrapper og sentrerer den */
-    padding: 5px; /* Legger til padding inni hero-wrapper */
-    width: 411px; /* Setter bredden til 411px */
+    border: 1px solid black;
+    margin: 5px auto;
+    padding: 5px;
+    width: 411px; /* Setter bredde for hero-wrapper */
 }
 
 #hero-container {
-    display: flex; /* Bruker flexbox for å ordne innholdet */
-    justify-content: space-between; /* Legger mellomrom mellom elementene */
-    padding: 20px; /* Legger til padding rundt containeren */
+    display: flex;
+    justify-content: space-between;
+    padding: 20px; /* Setter padding for hero-container */
 }
 
 #hero-box-1, #hero-box-2 {
-    flex: 1; /* Gjør at elementene tar opp like mye plass */
-    height: 400px; /* Setter høyden til 400px */
-    margin: 0 10px; /* Legger til margin på sidene */
+    flex: 1;
+    height: 400px;
+    margin: 0 10px; /* Setter margin mellom hero-bokser */
 }
 
 #hero-box-1 {
-    padding: 20px; /* Legger til padding rundt innholdet */
-    background-color: black; /* Setter bakgrunnsfarge til svart */
-    color: white; /* Setter tekstfargen til hvit */
-    border: 1px solid black; /* Legger til en tynn svart ramme */
+    padding: 20px;
+    background-color: black;
+    color: white;
+    border: 1px solid black; /* Setter border for hero-box-1 */
 }
 
 #hero-box-2 {
-    background: url('https://s3-alpha-sig.figma.com/img/ec21/83e2/03ad814be2b99f961f477e1ad0db86f9?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=doEp~44Y9ROQD-xKuckwPDP~Vt5lGfQ4FELVh1dDhMSGSFew2yVo8Pm2h3t7hM0qeuxzWkMsbQArHiYwVa61dxJmm9Hn3mSE9qxL~hrbxKNWLxcHNPaoI~EbPA7Enyyfy6JxuqUe4ode7ECbdG1Hbh5xN9213Oh-YRc5jNr0orHX1Wrh0V1M6GtuJa-0q4jlN-UJ4G7z0z2Q82-KsjwpB35dqpTUpb2ptLxkyMF5hNdHEMAyqAVivYR69AHxd4l-8ZXYj3fJX1dmKy1f8va-E-3SZi9BlDnaJ~s~Sz7LekNBHeUqmp2UJPyUiQw6AINsRQ316OjR~0nDp0kWQJFjCA__') no-repeat center center; /* Angir bakgrunnsbilde og justerer posisjonen */
-    background-size: cover; /* Dekker hele elementet med bildet */
-    border: 1px solid black; /* Legger til en tynn svart ramme */
+    background: url('https://s3-alpha-sig.figma.com/img/ec21/83e2/03ad814be2b99f961f477e1ad0db86f9?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=doEp~44Y9ROQD-xKuckwPDP~Vt5lGfQ4FELVh1dDhMSGSFew2yVo8Pm2h3t7hM0qeuxzWkMsbQArHiYwVa61dxJmm9Hn3mSE9qxL~hrbxKNWLxcHNPaoI~EbPA7Enyyfy6JxuqUe4ode7ECbdG1Hbh5xN9213Oh-YRc5jNr0orHX1Wrh0V1M6GtuJa-0q4jlN-UJ4G7z0z2Q82-KsjwpB35dqpTUpb2ptLxkyMF5hNdHEMAyqAVivYR69AHxd4l-8ZXYj3fJX1dmKy1f8va-E-3SZi9BlDnaJ~s~Sz7LekNBHeUqmp2UJPyUiQw6AINsRQ316OjR~0nDp0kWQJFjCA__') no-repeat center center; /* Setter bakgrunnsbilde for hero-box-2 */
+    background-size: cover;
+    border: 1px solid black; /* Setter border for hero-box-2 */
 }
 
 #admin-post {
-    text-align: center; /* Sentraljusterer teksten */
-    margin: 20px 0; /* Legger til margin over og under seksjonen */
+    text-align: center;
+    margin: 20px 0; /* Setter margin for admin-post-seksjon */
 }
 
 #admin-post hr {
-    border: 1px solid black; /* Setter en svart ramme for skillelinjene */
+    border: 1px solid black; /* Setter border for hr-elementer i admin-post */
 }
 
 .admin-post-content {
-    display: inline-block; /* Gjør at innholdet vises på linje */
-    padding: 10px 20px; /* Legger til padding rundt innholdet */
-    background-color: black; /* Setter bakgrunnsfargen til svart */
-    color: white; /* Setter tekstfargen til hvit */
-    font-size: 1.2em; /* Setter fontstørrelsen til 1.2em */
-    border: 2px solid white; /* Legger til en hvit ramme */
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    font-size: 1.2em;
+    border: 2px solid white; /* Setter border for admin-post-innhold */
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 20px 0;
+    border: 1px solid #85C2FB; /* Border med ønsket farge */
+    background-color: rgba(133, 194, 251, 0.42); /* Bakgrunnsfarge med ønsket opacity */
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-card {
+    flex: 0 0 20%; /* Reduserer bredden til 20% */
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 0 10px; /* Gir litt margin mellom kortene */
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+.carousel-card img {
+    width: 100%;
+    height: 150px; /* Begrens høyden på bilder i karusellen */
+    object-fit: cover; /* Sørger for at bildene dekker området uten å forvrenges */
+}
+
+.carousel-card h2 {
+    font-size: 1em; /* Redusert fontstørrelse for overskrifter */
+    margin: 10px 0;
+}
+
+.carousel-card p {
+    font-size: 0.8em; /* Redusert fontstørrelse for avsnitt */
+    margin: 5px 0;
+}
+
+.carousel-card a {
+    display: block;
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.carousel-card a:hover {
+    background-color: gray;
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+#blog-list-grid {
+    margin: 20px 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.grid-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgba(128, 128, 128, 0.6); /* Justerer bakgrunnsfarge og opacity */
+}
+
+.grid-item h2 {
+    font-size: 1em; /* Redusert fontstørrelse for overskrifter i rutenettkortene */
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+}
+
+#single-post {
+    background-color: black;
+    color: white;
+    padding: 20px;
+}
+
+#single-post .post-image {
+    width: 100%;
+    height: auto;
 }
 
 /* Media Query for devices up to 834px */
 @media (max-width: 834px) {
     #hero-container {
-        flex-direction: column; /* Endrer retning på flex-boksen til kolonne */
+        flex-direction: column;
     }
 
     #hero-box-1, #hero-box-2 {
-        margin: 10px 0; /* Legger til margin over og under elementene */
-        height: auto; /* Sett høyden til auto for å passe innholdet */
+        margin: 10px 0;
+        height: auto;
     }
 
-    #hero-box-2 {
-        background: none; /* Fjern eksisterende bakgrunn */
-        height: auto; /* Sett høyden til auto for å passe innholdet */
+    .carousel {
+        overflow-x: scroll;
+        -webkit-overflow-scrolling: touch;
     }
 
-    #hero-box-2::before {
-        content: ''; /* Legger til et pseudo-element */
-        display: block; /* Viser elementet som en blokk */
-        background: url('https://s3-alpha-sig.figma.com/img/ec21/83e2/03ad814be2b99f961f477e1ad0db86f9?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=doEp~44Y9ROQD-xKuckwPDP~Vt5lGfQ4FELVh1dDhMSGSFew2yVo8Pm2h3t7hM0qeuxzWkMsbQArHiYwVa61dxJmm9Hn3mSE9qxL~hrbxKNWLxcHNPaoI~EbPA7Enyyfy6JxuqUe4ode7ECbdG1Hbh5xN9213Oh-YRc5jNr0orHX1Wrh0V1M6GtuJa-0q4jlN-UJ4G7z0z2Q82-KsjwpB35dqpTUpb2ptLxkyMF5hNdHEMAyqAVivYR69AHxd4l-8ZXYj3fJX1dmKy1f8va-E-3SZi9BlDnaJ~s~Sz7LekNBHeUqmp2UJPyUiQw6AINsRQ316OjR~0nDp0kWQJFjCA__') no-repeat center center; /* Angir bakgrunnsbilde og justerer posisjonen */
-        background-size: cover; /* Dekker hele elementet med bildet */
-        height: 300px; /* Sett en fast høyde for å sikre at bildet vises */
+    .carousel-inner {
+        display: flex;
+        flex-wrap: nowrap;
+        width: max-content;
+    }
+
+    .carousel-card {
+        flex: 0 0 auto;
+        width: 80%; /* Reduserer bredden på karusellkortene for mobilvisning */
+        margin: 0 10px; /* Gir litt margin mellom kortene */
     }
 }
 
 footer {
-    background-color: #333; /* Setter bakgrunnsfargen til mørk grå */
-    color: #fff; /* Setter tekstfargen til hvit */
-    padding: 20px 0; /* Legger til padding over og under innholdet */
-    text-align: center; /* Sentrerer teksten */
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
 }
 
 .footer-container {
-    display: flex; /* Bruker flexbox for å ordne innholdet */
-    flex-direction: column; /* Viser elementene i en kolonne */
-    align-items: center; /* Sentrerer elementene horisontalt */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .social-links {
-    margin-bottom: 10px; /* Legger til margin under elementet */
+    margin-bottom: 10px;
 }
 
 .social-links a {
-    display: inline-block; /* Gjør at elementene vises på linje */
-    margin: 0 10px; /* Legger til margin på sidene av elementene */
+    display: inline-block;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.social-links a:hover {
+    text-decoration: underline;
 }
 
 .social-links img {
-    width: 30px; /* Setter bredden til 30px */
-    height: 30px; /* Setter høyden til 30px */
+    width: 30px;
+    height: auto;
 }
 
 .index-link {
-    margin-bottom: 10px; /* Legger til margin under elementet */
+    margin-bottom: 10px;
 }
 
 .index-link a {
-    color: #fff; /* Setter tekstfargen til hvit */
-    text-decoration: none; /* Fjerner understrekning */
+    color: #fff;
+    text-decoration: none;
 }
 
 .index-link a:hover {
-    text-decoration: underline; /* Legger til understrekning ved hover */
+    text-decoration: underline;
 }
 
 .copyright {
-    display: flex; /* Bruker flexbox for å ordne innholdet */
-    justify-content: space-between; /* Fordeler elementene med like mye plass mellom dem */
-    align-items: center; /* Sentrerer elementene vertikalt */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 copyright p {
-    margin: 0; /* Fjerner margin */
+    margin: 0;
 }

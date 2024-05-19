@@ -1,77 +1,96 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const singlePostSection = document.getElementById("single-post");
-    const blogSection1 = document.querySelector("#blog-list-1 .carousel-inner");
-    const blogSection2 = document.querySelector("#blog-list-2 .carousel-inner");
+    const singlePostSection = document.getElementById("single-post"); // Henter elementet for enkeltinnlegg
+    const carouselInner = document.getElementById("carousel-inner"); // Henter karusellens inner-container
+    const gridContainer = document.getElementById("grid-container"); // Henter grid-container for innleggene
 
-    // Fetch a single post before fetching the carousels
+    // Henter enkeltinnlegg før karusellene
     fetch("https://v2.api.noroff.dev/blog/posts/Christian_Westby")
-        .then(response => response.json())
+        .then(response => response.json()) // Konverterer responsen til JSON
         .then(function appendSinglePost(data) {
-            if (data.data.length > 0) {
-                const singlePostData = data.data[0]; // Fetch the first post
-                const singlePostDiv = document.createElement("div");
-                singlePostDiv.classList.add("post");
+            console.log('Fetched single post data:', data); // Logger dataen for enkel innsjekking
+            const posts = data.data; // Henter alle innlegg
+            const specificPost = posts.find(post => post.title === "# A JOURNEY BEYOND WORDS: CAPTURING THE ESSENCE OF EPIC NATURE IN YOUR WRITING");
+
+            if (specificPost) { // Sjekker om det spesifikke innlegget finnes
+                const singlePostDiv = document.createElement("div"); // Oppretter et nytt div-element
+                singlePostDiv.classList.add("post"); // Legger til klassen 'post' til div-elementet
                 singlePostDiv.innerHTML = `
-                    <h1>${singlePostData.title}</h1>
-                    <p>By ${singlePostData.author.name} on ${new Date(singlePostData.created).toLocaleDateString()}</p>
-                    <p>${singlePostData.body}</p>
-                    ${singlePostData.media ? `<img src="${singlePostData.media.url}" class="post-image">` : ''}
-                    <a href="post/singlepost.html?id=${singlePostData.id}" class="single-post-link">Click here to open blog post</a>
+                    <h1>${specificPost.title}</h1> <!-- Viser tittelen på innlegget -->
+                    <p>By ${specificPost.author.name} on ${new Date(specificPost.created).toLocaleDateString()}</p> <!-- Viser forfatter og dato -->
+                    ${specificPost.media ? `<img src="${specificPost.media.url}" class="post-image">` : ''} <!-- Viser bilde hvis det finnes -->
+                    <p>${specificPost.body}</p> <!-- Viser innholdet i innlegget -->
+                    <a href="post/singlepost.html?id=${specificPost.id}" class="single-post-link">Click here to open blog post</a> <!-- Lenke til enkeltinnlegg -->
                 `;
-                singlePostSection.appendChild(singlePostDiv);
+                singlePostSection.appendChild(singlePostDiv); // Legger til div-elementet i seksjonen for enkeltinnlegg
             } else {
-                console.error("No single post found.");
+                console.error("No specific single post found. Data:", posts); // Logger feil hvis det spesifikke innlegget ikke finnes
             }
         })
         .catch(error => {
-            console.error("Error fetching single post:", error);
+            console.error("Error fetching single post:", error); // Logger feil ved henting av enkeltinnlegg
         });
 
-    // Fetch the carousels
+    // Henter blogginnleggene for karusellen og rutenettet
     fetch("https://v2.api.noroff.dev/blog/posts/Christian_Westby")
-        .then(response => response.json())
+        .then(response => response.json()) // Konverterer responsen til JSON
         .then(function appendData(data) {
-            const blogData = data.data;
-            let postIndex1 = 1; // Variable to keep track of placement order for carousel 1
-            let postIndex2 = 1; // Variable to keep track of placement order for carousel 2
+            console.log('Fetched blog posts data:', data); // Logger dataen for enkel innsjekking
+            const blogData = data.data; // Henter bloggdata
 
-            blogData.forEach(data => {
-                const newDiv = document.createElement("div");
-                newDiv.classList.add("post");
-                newDiv.innerHTML = `
-                    <h2>${data.title}</h2>
-                    <p>By ${data.author.name} on ${new Date(data.created).toLocaleDateString()}</p>
-                    <p>${data.body}</p>
-                    ${data.media ? `<img src="${data.media.url}" class="post-image">` : ''}
-                    <a href="post/singlepost.html?id=${data.id}" class="single-post-link">Click here to open blog post</a>
-                `;
+            if (blogData.length > 0) {
+                // Legger til de 3 nyeste innleggene i karusellen
+                blogData.slice(0, 3).forEach(data => {
+                    const newDiv = document.createElement("div"); // Oppretter et nytt div-element
+                    newDiv.classList.add("carousel-card"); // Legger til klassen 'carousel-card' til div-elementet
+                    newDiv.innerHTML = `
+                        <h2>${data.title}</h2> <!-- Viser tittelen på innlegget -->
+                        <p>${new Date(data.created).toLocaleDateString()}</p> <!-- Viser datoen -->
+                        ${data.media ? `<img src="${data.media.url}" class="post-image">` : ''} <!-- Viser bilde hvis det finnes -->
+                        <p>${data.body ? data.body.substring(0, 25) : ''}...</p> <!-- Viser en kort versjon av innholdet -->
+                        <a href="post/singlepost.html?id=${data.id}" class="single-post-link">Les mer</a> <!-- Lenke til enkeltinnlegg -->
+                    `;
+                    carouselInner.appendChild(newDiv); // Legger til div-elementet i karusellen
+                });
 
-                if (postIndex1 <= 6) {
-                    blogSection1.appendChild(newDiv);
-                    postIndex1++; // Increment placement order for next post in carousel 1
-                } else {
-                    blogSection2.appendChild(newDiv);
-                    postIndex2++; // Increment placement order for next post in carousel 2
-                }
-            });
+                // Legger til de 12 siste innleggene i rutenettet
+                blogData.slice(0, 12).forEach(data => {
+                    const newDiv = document.createElement("div"); // Oppretter et nytt div-element
+                    newDiv.classList.add("grid-item"); // Legger til klassen 'grid-item' til div-elementet
+                    newDiv.innerHTML = `
+                        <h2>${data.title}</h2> <!-- Viser tittelen på innlegget -->
+                        ${data.media ? `<img src="${data.media.url}" class="post-image">` : ''} <!-- Viser bilde hvis det finnes -->
+                        <p>${data.body ? data.body.substring(0, 50) : ''}...</p> <!-- Viser en kort versjon av innholdet -->
+                        <a href="post/singlepost.html?id=${data.id}" class="single-post-link">Les mer</a> <!-- Lenke til enkeltinnlegg -->
+                    `;
+                    gridContainer.appendChild(newDiv); // Legger til div-elementet i rutenettet
+                });
 
-            // Add event listeners for carousel navigation
-            document.getElementById('prev-btn-1').addEventListener('click', () => scrollCarousel('blog-list-1', 'prev'));
-            document.getElementById('next-btn-1').addEventListener('click', () => scrollCarousel('blog-list-1', 'next'));
-            document.getElementById('prev-btn-2').addEventListener('click', () => scrollCarousel('blog-list-2', 'prev'));
-            document.getElementById('next-btn-2').addEventListener('click', () => scrollCarousel('blog-list-2', 'next'));
+                // Legger til event listeners for karusellnavigasjon
+                document.getElementById('prev-btn').addEventListener('click', () => scrollCarousel('prev')); // Legger til event listener for forrige knapp
+                document.getElementById('next-btn').addEventListener('click', () => scrollCarousel('next')); // Legger til event listener for neste knapp
+            } else {
+                console.error("No blog posts found. Data:", blogData); // Logger feil hvis ingen blogginnlegg finnes
+            }
         })
         .catch(error => {
-            console.error("Error fetching blog posts:", error);
+            console.error("Error fetching blog posts:", error); // Logger feil ved henting av blogginnlegg
         });
 
-    function scrollCarousel(carouselId, direction) {
-        const carouselInner = document.querySelector(`#${carouselId} .carousel-inner`);
-        const scrollAmount = 300; // Adjust based on the width of each post
+    function scrollCarousel(direction) {
+        const carouselInner = document.getElementById('carousel-inner'); // Henter karusell-elementet
+        const scrollAmount = carouselInner.clientWidth * 0.2; // Justerer basert på 20% av bredden av containeren
+
         if (direction === 'prev') {
-            carouselInner.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            carouselInner.scrollBy({ left: -scrollAmount, behavior: 'smooth' }); // Scroller til venstre
         } else {
-            carouselInner.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            carouselInner.scrollBy({ left: scrollAmount, behavior: 'smooth' }); // Scroller til høyre
+        }
+
+        // Gjenoppretter posisjonen når man når slutten
+        if (carouselInner.scrollLeft + carouselInner.clientWidth >= carouselInner.scrollWidth && direction === 'next') {
+            carouselInner.scrollTo({ left: 0, behavior: 'smooth' }); // Går til start
+        } else if (carouselInner.scrollLeft <= 0 && direction === 'prev') {
+            carouselInner.scrollTo({ left: carouselInner.scrollWidth, behavior: 'smooth' }); // Går til slutt
         }
     }
 });
