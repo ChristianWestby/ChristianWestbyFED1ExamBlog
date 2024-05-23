@@ -100,7 +100,8 @@ body {
     position: relative;
     width: 100%;
     overflow: hidden;
-    margin: 20px 0;
+    margin: 40px 0; /* Øker margin for mer luft mellom elementene */
+    padding: 20px; /* Øker padding for mer luft rundt karusellen */
     border: 1px solid #85C2FB; /* Border med ønsket farge */
     background-color: rgba(133, 194, 251, 0.42); /* Bakgrunnsfarge med ønsket opacity */
 }
@@ -111,17 +112,17 @@ body {
 }
 
 .carousel-card {
-    flex: 0 0 20%; /* Reduserer bredden til 20% */
+    flex: 0 0 80px; /* Reduserer bredden til 80px */
     box-sizing: border-box;
     padding: 10px;
     margin: 0 10px; /* Gir litt margin mellom kortene */
-    background-color: white;
-    border: 1px solid #ccc;
+    background-color: #CCE5FD; /* Bakgrunnsfarge */
+    border: 1px solid black; /* Sort border */
 }
 
 .carousel-card img {
     width: 100%;
-    height: 150px; /* Begrens høyden på bilder i karusellen */
+    height: 100px; /* Begrens høyden på bilder i karusellen */
     object-fit: cover; /* Sørger for at bildene dekker området uten å forvrenges */
 }
 
@@ -140,32 +141,29 @@ body {
     text-align: center;
     background-color: black;
     color: white;
-    padding: 10px;
+    padding: 5px;
     margin-top: 10px;
     text-decoration: none;
+    border-radius: 6px; /* Legger til avrundede kanter */
+    width: auto; /* Justerer bredde på knappen */
 }
 
 .carousel-card a:hover {
     background-color: gray;
 }
 
+.carousel-controls {
+    text-align: center; /* Sentraliserer knappene */
+    margin-top: 10px;
+}
+
 .prev-btn, .next-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     background-color: black;
     color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
-}
-
-.prev-btn {
-    left: 10px;
-}
-
-.next-btn {
-    right: 10px;
+    margin: 0 5px; /* Gir litt margin mellom knappene */
 }
 
 #blog-list-grid {

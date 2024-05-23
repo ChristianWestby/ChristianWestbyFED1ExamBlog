@@ -2,36 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Single Post</title>
-    <link rel="stylesheet" href="singlepost.css">
-    <script src="singlepost.js" defer></script>
+    <title>The Blog Spot</title>
+    <link rel="stylesheet" href="singlepostpage.css">
+    <script src="singlepostpage.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 </head>
 <body>
+<main>
     <header>
         <div class="header-container">
+            <div class="header-image">
+                <img src="https://i.ibb.co/vdcZv8v/image.png" alt="Hero Image">
+            </div>
             <div class="logo">
-                <img src="images/logo.png" alt="The Blog Spot">
+                <h1>THE BLOG SPOT</h1>
+                <hr style="border: 1px solid #fff; width: 60%;">
+                <p>Embrace the Inspiration: Writing Your Blog Amidst Spectacular Scenery - </p>
+                <p class="admin">Admin</p>
             </div>
         </div>
-        <img src="images/header.jpg" alt="Header Image" class="header-image">
     </header>
 
-    <main>
-        <section id="single-post" class="post-container"></section>
+    <div id="hero-wrapper">
+        <div id="hero-container">
+            <div id="hero-box-1">
+                <h2>#Imagine</h2>
+                <p>Embark on a journey beyond the confines of conventional writing spaces...</p>
+                <p class="admin">Admin</p>
+            </div>
+            <div id="hero-box-2"></div>
+        </div>
+    </div>
+
+    <section id="admin-post">
+        <hr>
+        <div class="admin-post-content">ADMIN POST OF THE DAY</div>
+        <hr>
+    </section>
+
+    <section id="single-post"></section>
+    <h2 id="see-more"># See more...</h2>
+    <section id="blog-list-grid">
+        <div class="grid-container" id="grid-container"></div>
+    </section>
+    <footer>
         <div class="footer-container">
-            <button id="go-back-button">Go Back</button    <footer>
             <div class="social-links">
-                <a href="https://www.facebook.com"><img src="images/facebook-icon.png" alt="Facebook"></a>
-                <a href="https://www.instagram.com"><img src="images/instagram-icon.png" alt="Instagram"></a>
-                <a href="https://www.twitter.com"><img src="images/twitter-icon.png" alt="Twitter"></a>
+                <a href="https://www.facebook.com" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
+                <a href="https://www.twitter.com" target="_blank"><img src="twitter-icon.png" alt="Twitter"></a>
             </div>
             <div class="index-link">
                 <a href="index.html">Home</a>
             </div>
-            <div class="copyright"                <p>&copy; 2024 Your Website Name</p>
-                <img src="images/copyright-icon.png" alt="Copyright">
+            <div class="copyright">
+                <p>&copy; 2024 The Blog Spot</p>
+                <img src="copyright-icon.png" alt="Copyright">
             </div>
         </div>
     </footer>
-</body>
-</html>
+    </body>
+    </html>
+    

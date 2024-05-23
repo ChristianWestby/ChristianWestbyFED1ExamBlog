@@ -1,67 +1,53 @@
 document.addEventListener('DOMContentLoaded', function () {
     const singlePostSection = document.getElementById("single-post");
-    const relatedPostsSection = document.getElementById("related-posts");
-    const goBackButton = document.getElementById("go-back-button");
-    const nextPostButton = document.getElementById("next-post-button");
-    const secondSinglePostSection = document.getElementById("second-single-post");
-
-    // Function to fetch and display related posts
-    function fetchAndDisplayRelatedPosts() {
-        fetch("https://v2.api.noroff.dev/blog/posts/Christian_Westby/")
-            .then(response => response.json())
-            .then(data => {
-                const blogData = data.data.slice(1, 7); // Fetch next 6 posts
-                relatedPostsSection.innerHTML = ""; // Clear previous posts
-                blogData.forEach(post => {
-                    const postDiv = document.createElement("div");
-                    postDiv.innerHTML = `
-                        <h1>${post.title}</h1>
-                        <h2>ID number ${post.id}</h2>
-                        <img src="${post.media ? post.media.url : ''}">
-                        <p>${post.body}</p>
-                        <a href="singlepost.html?id=${post.id}">Read more</a>
-                    `;
-                    relatedPostsSection.appendChild(postDiv);
-                });
-            });
-    }
-
-    // Fetch the single post
+    const gridContainer = document.getElementById("grid-container");
     const urlParams = new URLSearchParams(window.location.search);
     const postId = urlParams.get('id');
 
-    if (postId) {
-        fetch(`https://v2.api.noroff.dev/blog/posts/Christian_Westby/${postId}`)
-            .then(response => response.json())
-            .then(data => {
-                const singlePostData = data.data; // Fetch the single post by ID
-                const singlePostDiv = document.createElement("div");
+    // Henter enkeltinnlegg basert på ID
+    fetch(`https://v2.api.noroff.dev/blog/posts/${postId}`)
+        .then(response => response.json()) // Konverterer responsen til JSON
+        .then(function appendSinglePost(data) {
+            const singlePostData = data.data;
+            if (singlePostData) {
+                const singlePostDiv = document.createElement("div"); // Oppretter et nytt div-element
+                singlePostDiv.classList.add("post"); // Legger til klassen 'post' til div-elementet
                 singlePostDiv.innerHTML = `
-                    <h1>${singlePostData.title}</h1>
-                    <h2>ID number ${singlePostData.id}</h2>
-                    <img src="${singlePostData.media ? singlePostData.media.url : ''}">
-                    <p>${singlePostData.body}</p>
-                    <a href="text.html?id=${singlePostData.id}">Click here to open blog post</a>
+                    <h1>${singlePostData.title}</h1> <!-- Viser tittelen på innlegget -->
+                    <p>By ${singlePostData.author.name} on ${new Date(singlePostData.created).toLocaleDateString()}</p> <!-- Viser forfatter og dato -->
+                    <p>${singlePostData.body}</p> <!-- Viser innholdet i innlegget -->
+                    ${singlePostData.media ? `<img src="${singlePostData.media.url}" class="post-image">` : ''} <!-- Viser bilde hvis det finnes -->
                 `;
-                singlePostSection.appendChild(singlePostDiv);
-            })
-            .catch(error => {
-                console.error("Error fetching single post:", error);
+                singlePostSection.appendChild(singlePostDiv); // Legger til div-elementet i seksjonen for enkeltinnlegg
+            } else {
+                console.error("No specific single post found. Data:", data); // Logger feil hvis spesifikk enkeltinnlegg ikke finnes
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching single post:", error); // Logger feil ved henting av enkeltinnlegg
+        });
+
+    // Henter blogginnleggene for rutenettet
+    fetch("https://v2.api.noroff.dev/blog/posts")
+        .then(response => response.json()) // Konverterer responsen til JSON
+        .then(function appendData(data) {
+            const blogData = data.data; // Henter bloggdata
+            console.log("Fetched blog posts data:", blogData);
+
+            // Legger til de 12 siste innleggene i rutenettet
+            blogData.slice(0, 12).forEach(data => {
+                const newDiv = document.createElement("div"); // Oppretter et nytt div-element
+                newDiv.classList.add("grid-item"); // Legger til klassen 'grid-item' til div-elementet
+                newDiv.innerHTML = `
+                    <h2>${data.title}</h2> <!-- Viser tittelen på innlegget -->
+                    ${data.media ? `<img src="${data.media.url}" class="post-image">` : ''} <!-- Viser bilde hvis det finnes -->
+                    <p>${data.body ? data.body.substring(0, 50) : ''}...</p> <!-- Viser en kort versjon av innholdet -->
+                    <a href="singlepost.html?id=${data.id}" class="single-post-link">Les mer</a> <!-- Lenke til enkeltinnlegg -->
+                `;
+                gridContainer.appendChild(newDiv); // Legger til div-elementet i rutenettet
             });
-    } else {
-        console.error("No post ID found in URL.");
-    }
-
-    // Event listeners for buttons
-    goBackButton.addEventListener("click", () => {
-        window.location.href = "../index.html";
-    });
-
-    nextPostButton.addEventListener("click", () => {
-        // Fetch and display next post
-        fetchAndDisplayRelatedPosts();
-    });
-
-    // Call the function to fetch and display related posts when the page loads
-    fetchAndDisplayRelatedPosts();
+        })
+        .catch(error => {
+            console.error("Error fetching blog posts:", error); // Logger feil ved henting av blogginnlegg
+        });
 });

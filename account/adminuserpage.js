@@ -19,6 +19,8 @@ function createNewUserAccount() {
 }
 
 // Event-lyttere for knappene på administrasjonssiden
-document.getElementById("create-post-btn").addEventListener("click", createNewPost);
-document.getElementById("edit-delete-post-btn").addEventListener("click", editDeletePost);
-document.getElementById("create-user-btn").addEventListener("click", createNewUserAccount);
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById("create-post-btn").addEventListener("click", createNewPost);
+    document.getElementById("edit-delete-post-btn").addEventListener("click", editDeletePost);
+    document.getElementById("create-user-btn").addEventListener("click", createNewUserAccount);
+});
