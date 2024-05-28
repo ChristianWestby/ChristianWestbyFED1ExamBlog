@@ -28,20 +28,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (Array.isArray(posts)) {
                 // Gå gjennom hver post og opprett et avkryssningsfelt for den
-                posts.forEach(post => {
+                posts.forEach((post, index) => {
                     console.log('Post:', post);
+                    const checkboxWrapper = document.createElement('div');
+                    checkboxWrapper.className = 'checkbox-wrapper';
+
                     const checkbox = document.createElement('input');
                     checkbox.type = 'checkbox';
                     checkbox.id = `post-${post.id}`;
                     checkbox.name = 'post';
                     checkbox.value = post.id;
+
                     const label = document.createElement('label');
                     label.htmlFor = `post-${post.id}`;
-                    label.textContent = post.title;
+                    label.textContent = `${index + 1}. ${post.title}`;
 
-                    postContainer.appendChild(checkbox);
-                    postContainer.appendChild(label);
-                    postContainer.appendChild(document.createElement('br'));
+                    checkboxWrapper.appendChild(checkbox);
+                    checkboxWrapper.appendChild(label);
+                    postContainer.appendChild(checkboxWrapper);
+
+                    const underline = document.createElement('hr');
+                    postContainer.appendChild(underline);
                 });
             } else {
                 console.error('Posts er ikke en liste:', posts);

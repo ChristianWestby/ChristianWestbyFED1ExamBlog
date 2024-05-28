@@ -1,67 +1,193 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const singlePostSection = document.getElementById("single-post");
-    const relatedPostsSection = document.getElementById("related-posts");
-    const goBackButton = document.getElementById("go-back-button");
-    const nextPostButton = document.getElementById("next-post-button");
-    const secondSinglePostSection = document.getElementById("second-single-post");
+    const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ2hyaXN0aWFuX1dlc3RieSIsImVtYWlsIjoiY2hyaXN0aWFuLndlc3RieUBzdHVkLm5vcm9mZi5ubyIsImlhdCI6MTcxNTA4MDg5OH0.mQNsA2l7uUcw1wju125fK4_lJQC8ax1_g_J-QmT0HE8";
 
-    // Function to fetch and display related posts
-    function fetchAndDisplayRelatedPosts() {
-        fetch("https://v2.api.noroff.dev/blog/posts/Christian_Westby/")
-            .then(response => response.json())
-            .then(data => {
-                const blogData = data.data.slice(1, 7); // Fetch next 6 posts
-                relatedPostsSection.innerHTML = ""; // Clear previous posts
-                blogData.forEach(post => {
-                    const postDiv = document.createElement("div");
-                    postDiv.innerHTML = `
-                        <h1>${post.title}</h1>
-                        <h2>ID number ${post.id}</h2>
-                        <img src="${post.media ? post.media.url : ''}">
-                        <p>${post.body}</p>
-                        <a href="singlepost.html?id=${post.id}">Read more</a>
-                    `;
-                    relatedPostsSection.appendChild(postDiv);
+    // Fetcher poster fra API-et
+    function fetchPosts() {
+        fetch('https://v2.api.noroff.dev/blog/posts/Christian_Westby/', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${authToken}`
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Noe gikk galt ved henting av poster');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data hentet:', data);
+
+            const posts = data.data; // Bruker data.data som posts
+            console.log('Posts:', posts);
+
+            const postContainer = document.getElementById('post-checkbox-container');
+
+            // Tøm avkryssningsfeltene før du legger til nye poster
+            postContainer.innerHTML = '';
+
+            if (Array.isArray(posts)) {
+                // Gå gjennom hver post og opprett et avkryssningsfelt for den
+                posts.forEach((post, index) => {
+                    console.log('Post:', post);
+                    const checkboxWrapper = document.createElement('div');
+                    checkboxWrapper.className = 'checkbox-wrapper';
+
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.id = `post-${post.id}`;
+                    checkbox.name = 'post';
+                    checkbox.value = post.id;
+
+                    const label = document.createElement('label');
+                    label.htmlFor = `post-${post.id}`;
+                    label.textContent = `${index + 1}. ${post.title}`;
+
+                    checkboxWrapper.appendChild(checkbox);
+                    checkboxWrapper.appendChild(label);
+                    postContainer.appendChild(checkboxWrapper);
+
+                    const underline = document.createElement('hr');
+                    postContainer.appendChild(underline);
                 });
-            });
+            } else {
+                console.error('Posts er ikke en liste:', posts);
+            }
+        })
+        .catch(error => {
+            console.error('Feil ved henting av poster:', error);
+        });
     }
 
-    // Fetch the single post
-    const urlParams = new URLSearchParams(window.location.search);
-    const postId = urlParams.get('id');
+    // Funksjon for å hente den avkryssede posten for redigering
+    function fetchSelectedPostForEditing() {
+        const selectedPostCheckbox = document.querySelector('input[name="post"]:checked');
 
-    if (postId) {
-        fetch(`https://v2.api.noroff.dev/blog/posts/Christian_Westby/${postId}`)
-            .then(response => response.json())
-            .then(data => {
-                const singlePostData = data.data; // Fetch the single post by ID
-                const singlePostDiv = document.createElement("div");
-                singlePostDiv.innerHTML = `
-                    <h1>${singlePostData.title}</h1>
-                    <h2>ID number ${singlePostData.id}</h2>
-                    <img src="${singlePostData.media ? singlePostData.media.url : ''}">
-                    <p>${singlePostData.body}</p>
-                    <a href="text.html?id=${singlePostData.id}">Click here to open blog post</a>
-                `;
-                singlePostSection.appendChild(singlePostDiv);
+        if (selectedPostCheckbox) {
+            const selectedPostId = selectedPostCheckbox.value;
+            console.log('Valgt post-ID for redigering:', selectedPostId);
+
+            fetch(`https://v2.api.noroff.dev/blog/posts/Christian_Westby/${selectedPostId}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${authToken}`
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Feil ved henting av post for redigering');
+                }
+                return response.json();
+            })
+            .then(post => {
+                console.log('Post hentet for redigering:', post);
+                
+                const postData = post.data; // Bruker post.data for å få tilgang til postens faktiske data
+                console.log('Post Data:', postData);
+
+                // Fyller inn skjemaet med postens tittel, forfatter, innhold og bilde-URL
+                document.getElementById('updated-title').value = postData.title || '';
+                document.getElementById('updated-author').value = postData.author.name || '';
+                document.getElementById('updated-content').value = postData.body || '';
+                document.getElementById('edit-image-url').value = postData.media ? postData.media.url : '';
+
+                // Åpne redigeringsvinduet
+                document.getElementById('edit-modal').style.display = 'block';
             })
             .catch(error => {
-                console.error("Error fetching single post:", error);
+                console.error('Feil ved henting av post for redigering:', error);
             });
-    } else {
-        console.error("No post ID found in URL.");
+        } else {
+            console.log('Ingen post er valgt for redigering');
+        }
     }
 
-    // Event listeners for buttons
-    goBackButton.addEventListener("click", () => {
-        window.location.href = "../index.html";
+    // Funksjon for å oppdatere posten
+    function updatePost(event) {
+        event.preventDefault();
+
+        const selectedPostId = document.querySelector('input[name="post"]:checked').value;
+        const updatedTitle = document.getElementById('updated-title').value;
+        const updatedAuthor = document.getElementById('updated-author').value;
+        const updatedContent = document.getElementById('updated-content').value;
+        const updatedImageUrl = document.getElementById('edit-image-url').value;
+
+        console.log('Oppdatert tittel:', updatedTitle);
+        console.log('Oppdatert forfatter:', updatedAuthor);
+        console.log('Oppdatert innhold:', updatedContent);
+        console.log('Oppdatert bilde-URL:', updatedImageUrl);
+
+        const updatedPostData = {
+            title: updatedTitle,
+            body: updatedContent,
+            tags: [],
+            media: updatedImageUrl ? { url: updatedImageUrl, alt: "" } : null,
+            author: { name: updatedAuthor }
+        };
+
+        console.log('Oppdaterer post med ID:', selectedPostId);
+        console.log('Oppdaterer post med data:', JSON.stringify(updatedPostData));
+
+        fetch(`https://v2.api.noroff.dev/blog/posts/Christian_Westby/${selectedPostId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authToken}`
+            },
+            body: JSON.stringify(updatedPostData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => { throw new Error(err.message); });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Post oppdatert:', data);
+            document.getElementById('edit-modal').style.display = 'none';
+            fetchPosts(); // Oppdater postlisten etter oppdatering
+        })
+        .catch(error => {
+            console.error('Feil ved oppdatering av posten:', error);
+        });
+    }
+
+    // Funksjon for å slette posten
+    function deletePost() {
+        const selectedPostCheckbox = document.querySelector('input[name="post"]:checked');
+        if (!selectedPostCheckbox) {
+            console.log('Ingen post valgt for sletting');
+            return;
+        }
+
+        const selectedPostId = selectedPostCheckbox.value;
+        console.log('Sletter post-ID:', selectedPostId);
+
+        fetch(`https://v2.api.noroff.dev/blog/posts/Christian_Westby/${selectedPostId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${authToken}`
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Feil ved sletting av posten');
+            }
+            console.log('Post slettet:', selectedPostId);
+            // Oppdater postlisten etter sletting
+            fetchPosts();
+        })
+        .catch(error => {
+            console.error('Feil ved sletting av posten:', error);
+        });
+    }
+
+    document.getElementById('edit-post-btn').addEventListener('click', fetchSelectedPostForEditing);
+    document.getElementById('update-post-form').addEventListener('submit', updatePost);
+    document.getElementById('delete-post-btn').addEventListener('click', deletePost);
+    document.querySelector('.close').addEventListener('click', () => {
+        document.getElementById('edit-modal').style.display = 'none';
     });
 
-    nextPostButton.addEventListener("click", () => {
-        // Fetch and display next post
-        fetchAndDisplayRelatedPosts();
-    });
-
-    // Call the function to fetch and display related posts when the page loads
-    fetchAndDisplayRelatedPosts();
+    fetchPosts();
 });

@@ -1,62 +1,244 @@
-/* CSS-stil for Opprett Ny Brukerkonto-siden */
+/* CSS-stil for Create User Page */
 
 /* Generelle stiler */
 body {
     font-family: 'Manrope', sans-serif;
+    background: #FFFFFF;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+}
+
+.header-container {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.header-image img {
+    width: 100%;
+    height: 300px; /* Shortened height */
+    object-fit: cover;
+}
+
+.logo {
+    position: absolute;
+    top: 70%; /* Adjusted to lower the logo */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #E68900;
+}
+
+.logo h1 {
+    font-size: 60px; /* Larger font size for h1 */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+    color: #E68900;
+}
+
+.logo hr {
+    margin: 10px auto;
+    border: 1px solid #E68900;
+}
+
+.logo p {
+    font-size: 14px; /* Smaller font size for p */
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+    color: #E68900;
+}
+
+.admin {
+    font-family: 'Marck Script', cursive;
+    text-decoration: underline;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: #E68900;
+    display: block;
+}
+
+.hero-box-1 {
+    width: 100%;
+    height: 130px;
+    background-color: rgba(230, 138, 0, 0.5); /* Semi-transparent background to overlay on image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0; /* Positioned at the bottom of the header */
+}
+
+.hero-box-1 h1 {
+    color: #f4f1f1;
+    text-decoration: underline;
+    font-weight: lighter;
+    margin: 0;
+    text-align: center;
 }
 
 .container {
-    max-width: 600px;
-    margin: 50px auto;
+    max-width: 800px;
+    margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+.form-heading {
     text-align: center;
-    color: #333;
+    font-weight: lighter;
+    color: #100f0f;
+    text-decoration: underline;
 }
 
-.form-group {
-    margin-bottom: 20px;
+.form-box {
+    background-color: #000; /* Black background */
+    border-radius: 6px;
+    padding: 20px;
+    border: 2px solid #E68900;
 }
 
-label {
-    display: block;
+.form-box label {
+    color: #E68900; /* Orange color text */
     font-weight: bold;
-    margin-bottom: 8px;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
     display: block;
+    margin: 10px 0 5px;
+}
+
+.form-box input[type="text"],
+.form-box input[type="email"],
+.form-box input[type="password"] {
     width: 100%;
-    padding: 10px;
-    background-color: #007bff;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid #E68900;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #333; /* Dark background for inputs */
+    color: #fff; /* White text color for inputs */
+}
+
+.form-box input[type="text"]::placeholder,
+.form-box input[type="email"]::placeholder,
+.form-box input[type="password"]::placeholder {
+    color: #E68900; /* Orange placeholder text */
+    font-style: italic;
+}
+
+.form-box button {
+    background-color: #E68900;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 6px;
     cursor: pointer;
+    margin-right: 10px;
 }
 
-button:hover {
-    background-color: #0056b3;
+.form-box button:hover {
+    background-color: #0f0a04;
 }
 
-.error-message {
-    color: red;
-    margin-top: 10px;
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-links {
+    margin-bottom: 10px;
+}
+
+.social-links svg {
+    width: 48px;
+    height: 48px;
+    margin: 0 10px;
+}
+
+.index-link {
+    margin-bottom: 10px;
+}
+
+.index-link a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.index-link a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+copyright p {
+    margin: 0;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 834px) {
+    .header-container {
+        text-align: center;
+    }
+    
+    .logo {
+        top: 40%; /* Lower the logo for mobile */
+    }
+    
+    .logo h1 {
+        font-size: 32px; /* Adjusted font size for mobile */
+    }
+    
+    .logo p {
+        font-size: 12px; /* Adjusted font size for mobile */
+    }
+    
+    .hero-box-1 {
+        height: auto;
+        padding: 20px;
+        bottom: 0;
+    }
+    
+    .hero-box-1 h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+    
+    .container {
+        padding: 30px;
+    }
+    
+    .form-box {
+        padding: 50px;
+    }
+    
+    .form-box input[type="text"],
+    .form-box input[type="email"],
+    .form-box input[type="password"] {
+        padding: 25px;
+        font-size: 14px;
+    }
+    
+    footer {
+        padding: 10px 0;
+    }
+    
+    .social-links svg {
+        width: 24px;
+        height: 24px;
+    }
 }
