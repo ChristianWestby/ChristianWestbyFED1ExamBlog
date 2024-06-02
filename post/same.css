@@ -1,38 +1,201 @@
+/* CSS-stil for Edit Post Page */
+
+/* Generelle stiler */
 body {
     font-family: 'Manrope', sans-serif;
-    background-color: #f4f4f4;
+    background: #FFFFFF;
     margin: 0;
     padding: 0;
 }
 
 .header-container {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
-
-.logo img {
-    width: 150px;
-}
-
-.header-image {
+    position: relative;
     width: 100%;
-    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.header-image img {
+    width: 100%;
+    height: 300px; /* Shortened height */
+    object-fit: cover;
+}
+
+.logo {
+    position: absolute;
+    top: 70%; /* Adjusted to lower the logo */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #E68900;
+}
+
+.logo h1 {
+    font-size: 60px; /* Larger font size for h1 */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+    color: #E68900;
+}
+
+.logo hr {
+    margin: 10px auto;
+    border: 1px solid #E68900;
+}
+
+.logo p {
+    font-size: 14px; /* Smaller font size for p */
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+    color: #E68900;
+}
+
+.admin {
+    font-family: 'Marck Script', cursive;
+    text-decoration: underline;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: #E68900;
     display: block;
 }
 
-.post-container {
-    background-color: #fff;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.hero-box-1 {
+    width: 100%;
+    height: 130px;
+    background-color: rgba(230, 138, 0, 0.5); /* Semi-transparent background to overlay on image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0; /* Positioned at the bottom of the header */
 }
 
-.post-container img {
-    max-width: 100%;
-    border-radius: 8px;
+.hero-box-1 h1 {
+    color: #f4f1f1;
+    text-decoration: underline;
+    font-weight: lighter;
+    margin: 0;
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #000; /* Black background for the container */
+    border-radius: 6px;
+    border: 2px solid #E68900; /* Orange border for the container */
+}
+
+.form-heading {
+    text-align: center;
+    font-weight: lighter;
+    color: #100f0f;
+    text-decoration: underline;
+    margin-bottom: 20px; /* Added margin for spacing */
+}
+
+.form-box {
+    background-color: #333; /* Grey/Black background for the form box */
+    border-radius: 6px;
+    padding: 20px;
+    border: 2px solid #E68900;
+}
+
+.form-box label {
+    color: #E68900; /* Orange color text */
+    font-weight: bold;
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.form-box input[type="text"],
+.form-box textarea {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid #E68900;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #333; /* Dark background for inputs */
+    color: #fff; /* White text color for inputs */
+}
+
+.form-box input[type="text"]::placeholder,
+.form-box textarea::placeholder {
+    color: #E68900; /* Orange placeholder text */
+    font-style: italic;
+}
+
+.form-box button {
+    background-color: #E68900;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.form-box button:hover {
+    background-color: #0f0a04;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #E68900; /* Add underline after each post */
+}
+
+.checkbox-wrapper label {
+    margin-left: 10px;
+    color: #fff;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #333; /* Dark background for the modal */
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #E68900; /* Orange border for the modal */
+    width: 80%;
+    border-radius: 6px;
+}
+
+.modal-content h2 {
+    text-decoration: underline;
+    color: #E68900;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 footer {
@@ -48,8 +211,18 @@ footer {
     align-items: center;
 }
 
-.social-links a {
+.social-links {
+    margin-bottom: 10px;
+}
+
+.social-links svg {
+    width: 48px;
+    height: 48px;
     margin: 0 10px;
+}
+
+.index-link {
+    margin-bottom: 10px;
 }
 
 .index-link a {
@@ -61,17 +234,71 @@ footer {
     text-decoration: underline;
 }
 
-#go-back-button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.copyright {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
 }
 
-#go-back-button:hover {
-    background-color: #0056b3;
+copyright p {
+    margin: 0;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 834px) {
+    .header-container {
+        text-align: center;
+    }
+    
+    .logo {
+        top: 40%; /* Lower the logo for mobile */
+    }
+    
+    .logo h1 {
+        font-size: 32px; /* Adjusted font size for mobile */
+    }
+    
+    .logo p {
+        font-size: 12px; /* Adjusted font size for mobile */
+    }
+    
+    .hero-box-1 {
+        height: auto;
+        padding: 20px;
+        bottom: 0;
+    }
+    
+    .hero-box-1 h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+    
+    .container {
+        padding: 30px;
+    }
+    
+    .form-box {
+        padding: 50px;
+    }
+    
+    .form-box input[type="text"],
+    .form-box textarea {
+        padding: 25px;
+        font-size: 14px;
+    }
+    
+    .form-box button.back-btn {
+        margin-top: 40px; /* Ensure there's enough space in mobile view */
+    }
+    
+    footer {
+        padding: 10px 0;
+    }
+    
+    .social-links svg {
+        width: 24px;
+        height: 24px;
+    }
 }

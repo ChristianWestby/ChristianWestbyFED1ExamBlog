@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ2hyaXN0aWFuX1dlc3RieSIsImVtYWlsIjoiY2hyaXN0aWFuLndlc3RieUBzdHVkLm5vcm9mZi5ubyIsImlhdCI6MTcxNTA4MDg5OH0.mQNsA2l7uUcw1wju125fK4_lJQC8ax1_g_J-QmT0HE8";
+    const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ2hyaXN0aWFuX1dlc3RieSIsImVtYWlsIjoiY2hyaXN0aWFuLndlc3RieUBzdHVkLm5vcm9mZi5ubyIsImlhdCI6MTcxNTA4MDg5OH0.mQNsA2l7uUcw1wju125fK4_lJQC8ax1_g_J-QmT0HE8"; // Sett inn ditt autentiseringstoken her
 
     // Fetcher poster fra API-et
     function fetchPosts() {
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('edit-image-url').value = postData.media ? postData.media.url : '';
 
                 // Åpne redigeringsvinduet
-                document.getElementById('edit-modal').style.display = 'block';
+                document.querySelector('.edit-modal').style.display = 'block';
             })
             .catch(error => {
                 console.error('Feil ved henting av post for redigering:', error);
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(data => {
             console.log('Post oppdatert:', data);
-            document.getElementById('edit-modal').style.display = 'none';
+            document.querySelector('.edit-modal').style.display = 'none';
             fetchPosts(); // Oppdater postlisten etter oppdatering
         })
         .catch(error => {
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('update-post-form').addEventListener('submit', updatePost);
     document.getElementById('delete-post-btn').addEventListener('click', deletePost);
     document.querySelector('.close').addEventListener('click', () => {
-        document.getElementById('edit-modal').style.display = 'none';
+        document.querySelector('.edit-modal').style.display = 'none';
     });
 
     fetchPosts();

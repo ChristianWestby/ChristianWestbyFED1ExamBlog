@@ -1,29 +1,100 @@
-/* Sett opp Manrope-fonten */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap');
+/* CSS-stil for Login Page */
 
 /* Generelle stiler */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Manrope', sans-serif;
+    background: #FFFFFF;
     margin: 0;
-    padding:24px;
+    padding: 0;
+}
+
+.header-container {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.header-image img {
+    width: 100%;
+    height: 300px; /* Shortened height */
+    object-fit: cover;
+}
+
+.logo {
+    position: absolute;
+    top: 70%; /* Adjusted to lower the logo */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #E68900;
+}
+
+.logo h1 {
+    font-size: 60px; /* Larger font size for h1 */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+    color: #E68900;
+}
+
+.logo hr {
+    margin: 10px auto;
+    border: 1px solid #E68900;
+}
+
+.logo p {
+    font-size: 14px; /* Smaller font size for p */
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+    color: #E68900;
+}
+
+.admin {
+    font-family: 'Marck Script', cursive;
+    text-decoration: underline;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: #E68900;
+    display: block;
+}
+
+.hero-box-1 {
+    width: 100%;
+    height: 130px;
+    background-color: rgba(230, 138, 0, 0.5); /* Semi-transparent background to overlay on image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0; /* Positioned at the bottom of the header */
+}
+
+.hero-box-1 h1 {
+    color: #f4f1f1;
+    text-decoration: underline;
+    font-weight: lighter;
+    margin: 0;
+    text-align: center;
 }
 
 .login-container {
-    width: 100%;
     max-width: 400px;
     margin: 100px auto;
-    background-color: #fff;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #000; /* Black background */
+    border-radius: 6px;
+    border: 2px solid #E68900; /* Orange border */
 }
 
 h2 {
-    font-family: 'Manrope', sans-serif;
-    color: #333;
     text-align: center;
-    margin-bottom: 20px;
+    font-weight: lighter;
+    color: #E68900; /* Orange color for heading */
+    text-decoration: underline;
+    margin-bottom: 20px; /* Added margin for spacing */
 }
 
 .form-group {
@@ -32,28 +103,146 @@ h2 {
 
 label {
     display: block;
-    font-weight: 600;
+    font-weight: bold;
+    color: #E68900; /* Orange color for labels */
     margin-bottom: 5px;
 }
+
 input[type="text"],
 input[type="password"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid #E68900; /* Orange border */
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #333; /* Dark background for inputs */
+    color: #fff; /* White text color for inputs */
 }
 
 button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #E68900; /* Orange background */
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #555; /* Grey background on hover */
+}
+
+.button-link {
+    display: inline-block;
+    background-color: #E68900;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 15px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.button-link:hover {
+    background-color: #555; /* Grey background on hover */
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-links {
+    margin-bottom: 10px;
+}
+
+.social-links svg {
+    width: 48px;
+    height: 48px;
+    margin: 0 10px;
+}
+
+.index-link {
+    margin-bottom: 10px;
+}
+
+.index-link a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.index-link a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+copyright p {
+    margin: 0;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 834px) {
+    .header-container {
+        text-align: center;
+    }
+    
+    .logo {
+        top: 40%; /* Lower the logo for mobile */
+    }
+    
+    .logo h1 {
+        font-size: 32px; /* Adjusted font size for mobile */
+    }
+    
+    .logo p {
+        font-size: 12px; /* Adjusted font size for mobile */
+    }
+    
+    .hero-box-1 {
+        height: auto;
+        padding: 20px;
+        bottom: 0;
+    }
+    
+    .hero-box-1 h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+    
+    .login-container {
+        padding: 30px;
+    }
+    
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+        padding: 25px;
+        font-size: 14px;
+    }
+    
+    footer {
+        padding: 10px 0;
+    }
+    
+    .social-links svg {
+        width: 24px;
+        height: 24px;
+    }
 }

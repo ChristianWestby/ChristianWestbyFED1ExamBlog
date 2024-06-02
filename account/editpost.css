@@ -92,7 +92,7 @@ body {
 .form-heading {
     text-align: center;
     font-weight: lighter;
-    color: #100f0f;
+    color: #E68900; /* Updated to orange color */
     text-decoration: underline;
     margin-bottom: 20px; /* Added margin for spacing */
 }
@@ -175,13 +175,59 @@ body {
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #E68900; /* Orange border for the modal */
-    width: 80%;
+    width: 60%; /* Increased width for larger modal */
+    height: 80%; /* Increased height for larger modal */
     border-radius: 6px;
+    overflow-y: auto; /* Added scroll if content overflows */
 }
 
 .modal-content h2 {
     text-decoration: underline;
     color: #E68900;
+}
+
+.modal-content label {
+    color: #E68900; /* Orange color for labels in the modal */
+    font-weight: bold;
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.modal-content input[type="text"],
+.modal-content textarea {
+    width: 100%;
+    padding: 10px; /* Increased padding for inputs */
+    margin: 5px 0;
+    border: 1px solid #E68900;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #333; /* Dark background for inputs */
+    color: #fff; /* White text color for inputs */
+}
+
+.modal-content textarea {
+    height: 200px; /* Increased height for textarea */
+    max-height: 400px; /* Maximum height for textarea */
+}
+
+.modal-content input[type="text"]::placeholder,
+.modal-content textarea::placeholder {
+    color: #E68900; /* Orange placeholder text */
+    font-style: italic;
+}
+
+.modal-content button {
+    background-color: #E68900;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.modal-content button:hover {
+    background-color: #0f0a04;
 }
 
 .close {

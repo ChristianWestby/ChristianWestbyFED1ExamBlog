@@ -4,50 +4,65 @@ document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const postId = urlParams.get('id');
 
-    // Henter enkeltinnlegg basert på ID
+    // Fetch single post based on ID
     fetch(`https://v2.api.noroff.dev/blog/posts/${postId}`)
-        .then(response => response.json()) // Konverterer responsen til JSON
+        .then(response => response.json())
         .then(function appendSinglePost(data) {
-            const singlePostData = data.data;
-            if (singlePostData) {
-                const singlePostDiv = document.createElement("div"); // Oppretter et nytt div-element
-                singlePostDiv.classList.add("post"); // Legger til klassen 'post' til div-elementet
-                singlePostDiv.innerHTML = `
-                    <h1>${singlePostData.title}</h1> <!-- Viser tittelen på innlegget -->
-                    <p>By ${singlePostData.author.name} on ${new Date(singlePostData.created).toLocaleDateString()}</p> <!-- Viser forfatter og dato -->
-                    <p>${singlePostData.body}</p> <!-- Viser innholdet i innlegget -->
-                    ${singlePostData.media ? `<img src="${singlePostData.media.url}" class="post-image">` : ''} <!-- Viser bilde hvis det finnes -->
-                `;
-                singlePostSection.appendChild(singlePostDiv); // Legger til div-elementet i seksjonen for enkeltinnlegg
+            if (data && data.data) {
+                const singlePostData = data.data;
+                if (singlePostData) {
+                    const singlePostDiv = document.createElement("div");
+                    singlePostDiv.classList.add("post");
+                    singlePostDiv.innerHTML = `
+                        <h1>${singlePostData.title}</h1>
+                        ${singlePostData.media ? `<img src="${singlePostData.media.url}" alt="${singlePostData.media.alt}" class="single-post-image">` : ''}
+                        <p>By ${singlePostData.author.name} on ${new Date(singlePostData.created).toLocaleDateString()}</p>
+                        <p>${singlePostData.body}</p>
+                        <div class="button-container">
+                            <a href="index.html" class="post-button">Go Back</a>
+                            <a href="#" class="post-button">Next Post</a>
+                            <a href="#" class="post-button">View More</a>
+                        </div>
+                    `;
+                    singlePostSection.appendChild(singlePostDiv);
+                } else {
+                    console.error("No specific single post found. Data:", data);
+                }
             } else {
-                console.error("No specific single post found. Data:", data); // Logger feil hvis spesifikk enkeltinnlegg ikke finnes
+                console.error("Invalid response data:", data);
             }
         })
         .catch(error => {
-            console.error("Error fetching single post:", error); // Logger feil ved henting av enkeltinnlegg
+            console.error("Error fetching single post:", error);
         });
 
-    // Henter blogginnleggene for rutenettet
-    fetch("https://v2.api.noroff.dev/blog/posts")
-        .then(response => response.json()) // Konverterer responsen til JSON
+    // Fetch blog posts for the grid
+    fetch("https://v2.api.noroff.dev/blog/posts/Christian_Westby")
+        .then(response => response.json())
         .then(function appendData(data) {
-            const blogData = data.data; // Henter bloggdata
+            const blogData = data.data;
             console.log("Fetched blog posts data:", blogData);
 
-            // Legger til de 12 siste innleggene i rutenettet
-            blogData.slice(0, 12).forEach(data => {
-                const newDiv = document.createElement("div"); // Oppretter et nytt div-element
-                newDiv.classList.add("grid-item"); // Legger til klassen 'grid-item' til div-elementet
-                newDiv.innerHTML = `
-                    <h2>${data.title}</h2> <!-- Viser tittelen på innlegget -->
-                    ${data.media ? `<img src="${data.media.url}" class="post-image">` : ''} <!-- Viser bilde hvis det finnes -->
-                    <p>${data.body ? data.body.substring(0, 50) : ''}...</p> <!-- Viser en kort versjon av innholdet -->
-                    <a href="singlepost.html?id=${data.id}" class="single-post-link">Les mer</a> <!-- Lenke til enkeltinnlegg -->
-                `;
-                gridContainer.appendChild(newDiv); // Legger til div-elementet i rutenettet
-            });
+            if (Array.isArray(blogData) && blogData.length > 0) {
+                blogData.slice(0, 12).forEach(post => {
+                    const newDiv = document.createElement("div");
+                    newDiv.classList.add("grid-item");
+                    const title = post.title.length > 30 ? post.title.substring(0, 30) + '...' : post.title;
+                    newDiv.innerHTML = `
+                        <div class="title-container">
+                            <h2>${title}</h2>
+                        </div>
+                        ${post.media ? `<img src="${post.media.url}" class="post-image">` : ''}
+                        <p>${post.body ? post.body.substring(0, 50) : ''}...</p>
+                        <a href="singlepost.html?id=${post.id}" class="single-post-link">Read more</a>
+                    `;
+                    gridContainer.appendChild(newDiv);
+                });
+            } else {
+                console.error("No blog posts found. Data:", data);
+            }
         })
         .catch(error => {
-            console.error("Error fetching blog posts:", error); // Logger feil ved henting av blogginnlegg
+            console.error("Error fetching blog posts:", error);
         });
 });
