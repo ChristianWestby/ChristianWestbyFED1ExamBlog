@@ -1,16 +1,25 @@
+/* General Styles */
 body {
-    font-family: 'Manrope', sans-serif; /* Setter font-familie for hele siden */
+    font-family: 'Manrope', sans-serif;
 }
 
+/* Header Styles */
 .header-container {
     position: relative;
-    width: 100%; /* Setter bredde til 100% */
+    width: 100%;
+    overflow: hidden;
+}
+
+.header-image {
+    width: 100%;
 }
 
 .header-image img {
     width: 100%;
     height: auto;
-    opacity: 1.3; /* Justert opacity for header-bildet */
+    display: block;
+    opacity: 1.3;
+    border-radius: 10px;
 }
 
 .logo {
@@ -20,20 +29,20 @@ body {
     transform: translate(-50%, -50%);
     text-align: center;
     color: #fff;
-    margin-bottom: 10px; /* Setter margin nederst */
+    margin-bottom: 10px;
 }
 
 .logo h1 {
-    font-size: 2em; /* Setter font-størrelse for logo-tekst */
+    font-size: 2em;
     margin: 0;
 }
 
 .logo hr {
-    margin: 30px auto; /* Setter margin for hr-elementet */
+    margin: 30px auto;
 }
 
 .logo p {
-    font-size: 1em; /* Setter font-størrelse for logo-paragraf */
+    font-size: 1em;
     margin: 0;
 }
 
@@ -41,48 +50,73 @@ body {
     font-family: 'Marck Script', cursive;
     text-decoration: underline;
     margin-top: 30px;
-    display: block; /* Viser elementet som blokk */
+    display: block;
 }
 
+/* Hero Section Styles */
 #hero-wrapper {
     border: 1px solid black;
     margin: 5px auto;
     padding: 5px;
-    width: 411px; /* Setter bredde for hero-wrapper */
+    width: 90%; /* Adjusted to match #single-post width */
+    max-width: 800px; /* Ensure a maximum width */
+    border-radius: 10px; /* Match border-radius with other sections */
 }
 
 #hero-container {
     display: flex;
-    justify-content: space-between;
-    padding: 20px; /* Setter padding for hero-container */
+    flex-direction: column; /* Stack boxes vertically */
+    padding: 20px;
 }
 
 #hero-box-1, #hero-box-2 {
-    flex: 1;
-    height: 400px;
-    margin: 0 10px; /* Setter margin mellom hero-bokser */
+    width: 100%; /* Ensure both boxes are the same width */
+    margin: 10px 0;
+    border-radius: 10px;
 }
 
 #hero-box-1 {
     padding: 20px;
     background-color: black;
     color: white;
-    border: 1px solid black; /* Setter border for hero-box-1 */
+    border: 1px solid black;
+    height: 200px; /* Reduced height */
+    box-sizing: border-box; /* Include padding and border in width calculation */
 }
 
 #hero-box-2 {
-    background: url('https://s3-alpha-sig.figma.com/img/ec21/83e2/03ad814be2b99f961f477e1ad0db86f9?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=doEp~44Y9ROQD-xKuckwPDP~Vt5lGfQ4FELVh1dDhMSGSFew2yVo8Pm2h3t7hM0qeuxzWkMsbQArHiYwVa61dxJmm9Hn3mSE9qxL~hrbxKNWLxcHNPaoI~EbPA7Enyyfy6JxuqUe4ode7ECbdG1Hbh5xN9213Oh-YRc5jNr0orHX1Wrh0V1M6GtuJa-0q4jlN-UJ4G7z0z2Q82-KsjwpB35dqpTUpb2ptLxkyMF5hNdHEMAyqAVivYR69AHxd4l-8ZXYj3fJX1dmKy1f8va-E-3SZi9BlDnaJ~s~Sz7LekNBHeUqmp2UJPyUiQw6AINsRQ316OjR~0nDp0kWQJFjCA__') no-repeat center center; /* Setter bakgrunnsbilde for hero-box-2 */
-    background-size: cover;
-    border: 1px solid black; /* Setter border for hero-box-2 */
+    background-color: white;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    overflow: hidden; /* Ensure the image does not overflow the box */
+    height: 400px; /* Ensure original height remains */
+    box-sizing: border-box; /* Include padding and border in width calculation */
 }
 
+#hero-box-2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px; /* Ensure the image has rounded corners to match the box */
+}
+
+/* Admin Post Styles */
 #admin-post {
     text-align: center;
-    margin: 20px 0; /* Setter margin for admin-post-seksjon */
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px; /* Ensure a maximum width */
+    border: 1px solid black;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
 }
 
 #admin-post hr {
-    border: 1px solid black; /* Setter border for hr-elementer i admin-post */
+    border: 1px solid black;
 }
 
 .admin-post-content {
@@ -91,83 +125,57 @@ body {
     background-color: black;
     color: white;
     font-size: 1.2em;
-    border: 2px solid white; /* Setter border for admin-post-innhold */
+    border: 2px solid white;
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.carousel {
-    position: relative;
+/* Single Post Styles */
+#single-post {
+    background-color: #070a0d;
+    color: rgb(245, 237, 237);
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px; /* Ensure a maximum width */
+}
+
+#single-post .post-image {
     width: 100%;
-    overflow: hidden;
-    margin: 40px 0; /* Øker margin for mer luft mellom elementene */
-    padding: 20px; /* Øker padding for mer luft rundt karusellen */
-    border: 1px solid #85C2FB; /* Border med ønsket farge */
-    background-color: rgba(133, 194, 251, 0.42); /* Bakgrunnsfarge med ønsket opacity */
-}
-
-.carousel-inner {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-card {
-    flex: 0 0 80px; /* Reduserer bredden til 80px */
-    box-sizing: border-box;
-    padding: 10px;
-    margin: 0 10px; /* Gir litt margin mellom kortene */
-    background-color: #CCE5FD; /* Bakgrunnsfarge */
-    border: 1px solid black; /* Sort border */
-}
-
-.carousel-card img {
-    width: 100%;
-    height: 100px; /* Begrens høyden på bilder i karusellen */
-    object-fit: cover; /* Sørger for at bildene dekker området uten å forvrenges */
-}
-
-.carousel-card h2 {
-    font-size: 1em; /* Redusert fontstørrelse for overskrifter */
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
     margin: 10px 0;
 }
 
-.carousel-card p {
-    font-size: 0.8em; /* Redusert fontstørrelse for avsnitt */
-    margin: 5px 0;
-}
-
-.carousel-card a {
-    display: block;
+#single-post .single-post-link {
+    display: inline-block;
     text-align: center;
-    background-color: black;
+    background-color: #E68900;
     color: white;
-    padding: 5px;
-    margin-top: 10px;
+    padding: 10px 20px;
     text-decoration: none;
-    border-radius: 6px; /* Legger til avrundede kanter */
-    width: auto; /* Justerer bredde på knappen */
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
 }
 
-.carousel-card a:hover {
-    background-color: gray;
+#single-post .single-post-link:hover {
+    background-color: #cc7a00;
 }
 
-.carousel-controls {
-    text-align: center; /* Sentraliserer knappene */
-    margin-top: 10px;
-}
-
-.prev-btn, .next-btn {
-    background-color: black;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    margin: 0 5px; /* Gir litt margin mellom knappene */
-}
-
+/* Blog List Grid Styles */
 #blog-list-grid {
-    margin: 20px 0;
+    margin: 20px auto;
+    background-color: rgba(17, 118, 212, 0.735);
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px; /* Ensure a maximum width */
 }
 
 .grid-container {
@@ -177,46 +185,221 @@ body {
 }
 
 .grid-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
     cursor: pointer;
-    background-color: rgba(128, 128, 128, 0.6); /* Justerer bakgrunnsfarge og opacity */
+    background-color: rgba(128, 128, 128, 0.3);
+    border-radius: 4px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.grid-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .grid-item h2 {
-    font-size: 1em; /* Redusert fontstørrelse for overskrifter i rutenettkortene */
+    font-size: 1em;
+    margin: 0 0 10px 0; /* Add margin below the title */
+    height: auto; /* Remove height constraint */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .grid-item img {
     width: 100%;
     height: auto;
+    margin-bottom: 10px;
 }
 
-#single-post {
-    background-color: black;
-    color: white;
+.grid-item .single-post-link {
+    margin-top: auto;
+    background-color: #E68900;
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.grid-item .single-post-link:hover {
+    background-color: #cc7a00;
+}
+
+/* Button Container Styles */
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.post-button {
+    background-color: #E68900;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.post-button:hover {
+    background-color: #cc7a00;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-links {
+    margin-bottom: 10px;
+}
+
+.social-links svg {
+    width: 48px;
+    height: 48px;
+    margin: 0 10px;
+}
+
+.index-link {
+    margin-bottom: 10px;
+}
+
+.index-link a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.index-link a:hover {
+    text-decoration: underline;
+}
+
+/* Carousel Styles */
+.carousel {
+    position: relative;
+    width: 90%;
+    margin: 40px auto;
     padding: 20px;
+    border: 1px solid #85C2FB;
+    background-color: rgba(17, 118, 212, 0.735);
+    border-radius: 10px;
+    height: 380px;
+    max-width: 800px; /* Ensure a maximum width */
 }
 
-#single-post .post-image {
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 340px;
+}
+
+.carousel-card {
+    flex: 0 0 auto;
+    height: 350px; /* Increased height */
+    width: 200px;
+    margin: 0 10px;
+    background-color: #CCE5FD;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.carousel-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-card img {
     width: 100%;
-    height: auto;
+    height: 180px; /* Adjusted height */
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.carousel-card h2 {
+    font-size: 1em;
+    margin: 5px 0;
+    height: auto; /* Remove height constraint */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.carousel-card p {
+    font-size: 0.8em;
+    margin: 5px 0;
+    height: 2.4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.carousel-card a {
+    display: block;
+    text-align: center;
+    background-color: #E68900;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.carousel-card a:hover {
+    background-color: #cc7a00;
+}
+
+.carousel-controls {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.prev-btn, .next-btn {
+    background-color: #E68900;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: #cc7a00;
 }
 
 /* Media Query for devices up to 834px */
 @media (max-width: 834px) {
-    #hero-container {
-        flex-direction: column;
-    }
-
-    #hero-box-1, #hero-box-2 {
-        margin: 10px 0;
-        height: auto;
-    }
-
     .carousel {
-        overflow-x: scroll;
+        overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }
 
@@ -228,8 +411,37 @@ body {
 
     .carousel-card {
         flex: 0 0 auto;
-        width: 80%; /* Reduserer bredden på karusellkortene for mobilvisning */
-        margin: 0 10px; /* Gir litt margin mellom kortene */
+        width: 70%;
+        margin: 0 5px;
+    }
+
+    .carousel-card img {
+        height: 150px;
+    }
+}
+
+/* Media Query for devices up to 428px */
+@media (max-width: 428px) {
+    .carousel {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .carousel-inner {
+        display: flex;
+        flex-wrap: nowrap;
+        width: max-content;
+    }
+
+    .carousel-card {
+        flex: 0 0 auto;
+        height: 350px; /* Increased height */
+        width: 200px;
+        margin: 0 5px;
+    }
+
+    .carousel-card img {
+        height: 150px;
     }
 }
 
@@ -250,20 +462,10 @@ footer {
     margin-bottom: 10px;
 }
 
-.social-links a {
-    display: inline-block;
+.social-links svg {
+    width: 48px;
+    height: 48px;
     margin: 0 10px;
-    text-decoration: none;
-    color: #fff;
-}
-
-.social-links a:hover {
-    text-decoration: underline;
-}
-
-.social-links img {
-    width: 30px;
-    height: auto;
 }
 
 .index-link {
@@ -277,14 +479,4 @@ footer {
 
 .index-link a:hover {
     text-decoration: underline;
-}
-
-.copyright {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-copyright p {
-    margin: 0;
 }
