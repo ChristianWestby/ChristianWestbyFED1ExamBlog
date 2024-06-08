@@ -24,13 +24,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     return;
                 }
 
-                const singlePostData = posts[0]; // Assuming we want the first post
+                const randomIndex = Math.floor(Math.random() * posts.length);
+                const singlePostData = posts[randomIndex]; // Select a random post
+
                 const singlePostDiv = document.createElement("div");
                 singlePostDiv.classList.add("post");
                 singlePostDiv.innerHTML = `
                     <h1>${singlePostData.title}</h1>
                     <p>By ${singlePostData.author?.name || 'Unknown Author'} on ${new Date(singlePostData.created).toLocaleDateString()}</p>
-                    ${singlePostData.media ? `<img src="${singlePostData.media.url}" class="post-image">` : ''}
+                    ${singlePostData.media ? `<img src="${singlePostData.media.url}" class="post-image" alt="Image for ${singlePostData.title}">` : ''}
                     <p>${singlePostData.body}</p>
                     <a href="singlepostpage.html?id=${singlePostData.id}" class="single-post-link">Read the post</a>
                 `;
@@ -55,11 +57,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const newDiv = document.createElement("div");
             newDiv.classList.add("carousel-card");
             newDiv.innerHTML = `
-                <h2>${truncateString(post.title, 30)}</h2>
+                <h2>${truncateString(post.title, 80)}</h2>
                 <p>${new Date(post.created).toLocaleDateString()}</p>
-                ${post.media ? `<img src="${post.media.url}" class="post-image">` : ''}
-                <p>${post.body ? post.body.substring(0, 25) : ''}...</p>
-                <a href="singlepostpage.html?id=${post.id}" class="single-post-link">Read more</a>
+                ${post.media ? `<img src="${post.media.url}" class="post-image" alt="Image for ${post.title}">` : ''}
+                <p>${post.body ? post.body.substring(0, 80) : ''}...</p>
+                <button class="post-button" onclick="location.href='singlepostpage.html?id=${post.id}'">Read More</button>
             `;
             return newDiv;
         });
@@ -78,8 +80,8 @@ document.addEventListener('DOMContentLoaded', function () {
             newDiv.classList.add("grid-item");
             newDiv.innerHTML = `
                 <h2>${truncateString(post.title, 50)}</h2>
-                ${post.media ? `<img src="${post.media.url}" class="post-image">` : ''}
-                <p>${post.body ? post.body.substring(0, 50) : ''}...</p>
+                ${post.media ? `<img src="${post.media.url}" class="post-image" alt="Image for ${post.title}">` : ''}
+                <p>${post.body ? post.body.substring(0, 80) : ''}...</p>
                 <a href="singlepostpage.html?id=${post.id}" class="single-post-link">Read more</a>
             `;
             gridContainer.appendChild(newDiv);
@@ -115,4 +117,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     startInfiniteScroll();
+
+    // Event listeners for carousel controls
+    document.getElementById('carousel-prev').addEventListener('click', function () {
+        carouselInner.scrollBy({ left: -220, behavior: 'smooth' });
+    });
+
+    document.getElementById('carousel-next').addEventListener('click', function () {
+        carouselInner.scrollBy({ left: 220, behavior: 'smooth' });
+    });
 });
