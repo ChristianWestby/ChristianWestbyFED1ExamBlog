@@ -1,6 +1,6 @@
 /* CSS-stil for Admin User Page */
 
-/* Generelle stiler */
+/* General Styles */
 body {
     font-family: 'Manrope', sans-serif;
     background: #FFFFFF;
@@ -23,7 +23,7 @@ body {
 
 .logo {
     position: absolute;
-    top: 70%; /* Adjusted to lower the logo */
+    top: 60%; /* Adjusted to lower the logo */
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -59,25 +59,6 @@ body {
     letter-spacing: 2px;
     color: #E68900;
     display: block;
-}
-
-.hero-box-1 {
-    width: 100%;
-    height: 130px;
-    background-color: rgba(230, 138, 0, 0.5); /* Semi-transparent background to overlay on image */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    bottom: 0; /* Positioned at the bottom of the header */
-}
-
-.hero-box-1 h1 {
-    color: #f4f1f1;
-    text-decoration: underline;
-    font-weight: lighter;
-    margin: 0;
-    text-align: center;
 }
 
 .container {
@@ -128,7 +109,7 @@ body {
 footer {
     background-color: #333;
     color: #fff;
-    padding: 20px 0;
+    padding: 40px 0; /* Increased padding */
     text-align: center;
 }
 
@@ -174,53 +155,124 @@ copyright p {
 }
 
 /* Media Queries for Mobile Responsiveness */
-@media (max-width: 834px) {
+@media (max-width: 428px) {
     .header-container {
         text-align: center;
     }
-    
+
     .logo {
         top: 40%; /* Lower the logo for mobile */
     }
-    
+
     .logo h1 {
         font-size: 32px; /* Adjusted font size for mobile */
     }
-    
+
     .logo p {
         font-size: 12px; /* Adjusted font size for mobile */
     }
-    
-    .hero-box-1 {
-        height: auto;
-        padding: 20px;
-        bottom: 0;
-    }
-    
-    .hero-box-1 h1 {
-        font-size: 24px;
-        text-align: center;
-    }
-    
+
     .container {
-        padding: 30px;
+        padding: 20px;
     }
-    
+
     .form-box {
-        padding: 50px;
+        padding: 20px;
     }
-    
+
     .admin-box li {
-        padding: 25px;
+        padding: 15px;
         font-size: 14px;
     }
-    
+
     footer {
         padding: 10px 0;
     }
-    
+
     .social-links svg {
         width: 24px;
         height: 24px;
+    }
+}
+
+/* Media Queries for Tablet Responsiveness */
+@media (min-width: 429px) and (max-width: 834px) {
+    .header-container {
+        text-align: center;
+    }
+
+    .logo {
+        top: 40%; /* Adjusted for tablet to avoid overlapping */
+    }
+
+    .logo h1 {
+        font-size: 48px; /* Adjusted font size for tablet */
+    }
+
+    .logo p {
+        font-size: 14px; /* Adjusted font size for tablet */
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .form-box {
+        padding: 30px;
+    }
+
+    .admin-box li {
+        padding: 20px;
+        font-size: 16px;
+    }
+
+    footer {
+        padding: 40px 0; /* Increased padding */
+    }
+
+    .social-links svg {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* Media Queries for Desktop Responsiveness */
+@media (min-width: 835px) {
+    .header-container {
+        text-align: center;
+    }
+
+    .logo {
+        top: 30%; /* Adjusted for desktop to avoid overlapping */
+    }
+
+    .logo h1 {
+        font-size: 60px; /* Adjusted font size for desktop */
+    }
+
+    .logo p {
+        font-size: 16px; /* Adjusted font size for desktop */
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .form-box {
+        padding: 20px;
+    }
+
+    .admin-box li {
+        padding: 20px;
+        font-size: 18px;
+    }
+
+    footer {
+        padding: 60px 0; /* Increased padding */
+    }
+
+    .social-links svg {
+        width: 48px;
+        height: 48px;
     }
 }

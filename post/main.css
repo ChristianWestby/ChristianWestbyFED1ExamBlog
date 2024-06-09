@@ -1,6 +1,7 @@
 /* General Styles */
 body {
     font-family: 'Manrope', sans-serif;
+    background: #f0f4f8; /* New background color for the page */
 }
 
 /* Header Styles */
@@ -8,17 +9,23 @@ body {
     position: relative;
     width: 100%;
     overflow: hidden;
+    margin-bottom: 40px;
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
 }
 
 .header-image {
     width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .header-image img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 10px;
 }
 
 .logo {
@@ -65,12 +72,13 @@ section {
 
 /* Hero Section Styles */
 #hero-wrapper {
-    border: 1px solid black;
-    margin: 5px auto;
-    padding: 5px;
+    margin: 20px auto;
+    padding: 20px;
     width: 90%;
-    max-width: 1200px; /* Increase max width for wider display */
+    max-width: 1200px; /* Adjust width to match the "Admin post of the day" */
     border-radius: 10px;
+    background: #fff; /* New background color for hero-wrapper */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #hero-container {
@@ -98,6 +106,15 @@ section {
     justify-content: center; /* Center content vertically */
 }
 
+#hero-box-1 h2 {
+    font-size: 1.5em; /* Smaller text size */
+    text-decoration: underline; /* Underline for #Imagine */
+}
+
+#hero-box-1 p {
+    padding-left: 20px; /* Padding from the left */
+}
+
 #hero-box-2 {
     border: 1px solid black;
     display: flex;
@@ -107,6 +124,7 @@ section {
     overflow: hidden;
     height: 400px;
     box-sizing: border-box;
+    flex: 2; /* Make hero-box-2 wider */
 }
 
 #hero-box-2 img {
@@ -125,6 +143,7 @@ section {
     padding: 20px;
     box-sizing: border-box;
     border-radius: 10px;
+    background: linear-gradient(135deg, #f093fb, #f5576c); /* Cool gradient background color */
 }
 
 #admin-post hr {
@@ -167,7 +186,7 @@ section {
 #single-post .single-post-link {
     display: inline-block;
     text-align: center;
-    background-color: #E68900;
+    background-color: #4CAF50; /* New button color */
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -177,7 +196,7 @@ section {
 }
 
 #single-post .single-post-link:hover {
-    background-color: #cc7a00;
+    background-color: #45A049;
 }
 
 /* Blog List Grid Styles */
@@ -188,6 +207,15 @@ section {
     border-radius: 10px;
     width: 90%;
     max-width: 1200px; /* Increase max width for wider display */
+    position: relative; /* Ensure positioning of see-more */
+}
+
+#see-more {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    margin: 0;
+    text-align: left;
 }
 
 .grid-container {
@@ -195,6 +223,7 @@ section {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust column size for wider display */
     grid-auto-rows: minmax(200px, auto); /* Ensure two rows of cards */
     gap: 20px; /* Increase gap between items */
+    margin-top: 50px; /* Ensure space from the see-more heading */
 }
 
 .grid-item {
@@ -234,7 +263,7 @@ section {
 
 .grid-item .single-post-link {
     margin-top: auto;
-    background-color: #E68900;
+    background-color: #4CAF50; /* New button color */
     color: #fff;
     padding: 10px;
     text-decoration: none;
@@ -244,7 +273,7 @@ section {
 }
 
 .grid-item .single-post-link:hover {
-    background-color: #cc7a00;
+    background-color: #45A049;
 }
 
 /* Button Container Styles */
@@ -255,7 +284,7 @@ section {
 }
 
 .post-button {
-    background-color: #E68900;
+    background-color: #4CAF50; /* New button color */
     color: #fff;
     padding: 10px 20px;
     text-decoration: none;
@@ -264,7 +293,7 @@ section {
 }
 
 .post-button:hover {
-    background-color: #cc7a00;
+    background-color: #45A049;
 }
 
 /* Footer Styles */
@@ -306,11 +335,10 @@ footer {
 
 /* See More Styles */
 #see-more {
-    width: 90%;
-    max-width: 1200px; /* Increase max width for wider display */
-    margin: 20px auto;
-    padding-left: 20px;
-    text-align: left; /* Align text to the left */
+    margin: 20px 0 10px 5%;
+    text-align: left;
+    color: black;
+    font-weight: bold;
 }
 
 /* Existing styles */
@@ -468,6 +496,7 @@ footer {
     }
 
     #hero-box-2 {
+        flex: 2; /* Make hero-box-2 wider */
         display: flex;
         align-items: center;
         justify-content: center;

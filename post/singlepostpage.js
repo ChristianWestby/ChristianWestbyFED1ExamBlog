@@ -66,12 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
             currentPostIndex = blogData.findIndex(post => post.id === postId);
 
             appendGridPosts(blogData);
-
-            // Append Homepage button after the grid
-            const homepageButton = document.createElement('div');
-            homepageButton.classList.add('button-container');
-            homepageButton.innerHTML = `<a href="index.html" class="post-button">Homepage</a>`;
-            gridContainer.parentElement.appendChild(homepageButton);
         })
         .catch(error => {
             console.error("Error fetching blog posts:", error);
