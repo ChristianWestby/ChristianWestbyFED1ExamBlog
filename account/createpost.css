@@ -1,6 +1,6 @@
-/* CSS-stil for Login Page */
+/* CSS-stil for Create Post Page */
 
-/* Generelle stiler */
+/* General Styles */
 body {
     font-family: 'Manrope', sans-serif;
     background: #FFFFFF;
@@ -23,7 +23,7 @@ body {
 
 .logo {
     position: absolute;
-    top: 70%; 
+    top: 60%; 
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -61,100 +61,69 @@ body {
     display: block;
 }
 
-.hero-box-1 {
-    width: 100%;
-    height: 130px;
-    background-color: rgba(230, 138, 0, 0.5); 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    bottom: 0; 
-}
-
-.hero-box-1 h1 {
-    color: #f4f1f1;
-    text-decoration: underline;
-    font-weight: lighter;
-    margin: 0;
-    text-align: center;
-}
-
-.page-heading {
-    text-align: center;
-    font-weight: lighter;
-    color: #100f0f; 
-    text-decoration: underline;
-    margin: 40px 0 20px; 
-}
-
-.login-container {
-    max-width: 400px;
-    margin: 0 auto;
+.container {
+    max-width: 800px;
+    margin: 20px auto;
     padding: 20px;
+}
+
+.form-heading {
+    text-align: center;
+    font-weight: lighter;
+    color: #100f0f;
+    text-decoration: underline;
+}
+
+.form-box {
     background-color: #000; 
     border-radius: 6px;
-    border: 2px solid #E68900; 
-    margin-bottom: 50px; 
+    padding: 20px;
+    border: 2px solid #E68900;
 }
 
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    font-weight: bold;
+.form-box label {
     color: #E68900; 
-    margin-bottom: 5px;
+    font-weight: bold;
+    display: block;
+    margin: 10px 0 5px;
 }
 
-input[type="text"],
-input[type="password"] {
+.form-box input[type="text"],
+.form-box textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #E68900; 
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid #E68900;
     border-radius: 6px;
     box-sizing: border-box;
     background-color: #333; 
     color: #fff; 
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #E68900; 
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.form-box input[type="text"]::placeholder,
+.form-box textarea::placeholder {
+    color: #E68900; 
+    font-style: italic;
 }
 
-button:hover {
-    background-color: #555; 
-}
-
-.button-link {
-    display: inline-block;
+.form-box button {
     background-color: #E68900;
     color: #fff;
+    border: none;
     padding: 10px 20px;
     border-radius: 6px;
-    text-decoration: none;
-    margin-top: 15px;
-    text-align: center;
-    transition: background-color 0.3s;
+    cursor: pointer;
+    margin-right: 10px;
 }
 
-.button-link:hover {
-    background-color: #555; 
+.form-box button:hover {
+    background-color: #0f0a04;
 }
 
 footer {
     background-color: #333;
     color: #fff;
-    padding: 20px 0;
+    padding: 40px 0; 
     text-align: center;
 }
 
@@ -200,49 +169,41 @@ copyright p {
 }
 
 /* Media Queries for Mobile Responsiveness */
-@media (max-width: 834px) {
+@media (max-width: 428px) {
     .header-container {
         text-align: center;
     }
-    
+
     .logo {
         top: 40%; 
     }
-    
+
     .logo h1 {
         font-size: 32px; 
     }
-    
+
     .logo p {
         font-size: 12px; 
     }
-    
-    .hero-box-1 {
-        height: auto;
+
+    .container {
         padding: 20px;
-        bottom: 0;
     }
-    
-    .hero-box-1 h1 {
-        font-size: 24px;
-        text-align: center;
+
+    .form-box {
+        padding: 20px;
     }
-    
-    .login-container {
-        padding: 30px;
-        margin-bottom: 30px; 
-    }
-    
-    .login-container input[type="text"],
-    .login-container input[type="password"] {
-        padding: 25px;
+
+    .form-box input[type="text"],
+    .form-box textarea {
+        padding: 15px;
         font-size: 14px;
     }
-    
+
     footer {
         padding: 10px 0;
     }
-    
+
     .social-links svg {
         width: 24px;
         height: 24px;
@@ -250,77 +211,83 @@ copyright p {
 }
 
 /* Media Queries for Tablet Responsiveness */
-@media (min-width: 835px) and (max-width: 1728px) {
+@media (min-width: 429px) and (max-width: 834px) {
     .header-container {
         text-align: center;
     }
-    
+
     .logo {
-        top: 60%; 
+        top: 40%; 
     }
-    
+
     .logo h1 {
         font-size: 48px; 
     }
-    
+
     .logo p {
-        font-size: 16px; 
+        font-size: 14px; 
     }
-    
-    .login-container {
-        padding: 40px;
-        margin-bottom: 40px; 
+
+    .container {
+        padding: 20px;
     }
-    
-    .login-container input[type="text"],
-    .login-container input[type="password"] {
+
+    .form-box {
+        padding: 30px;
+    }
+
+    .form-box input[type="text"],
+    .form-box textarea {
         padding: 20px;
         font-size: 16px;
     }
-    
+
     footer {
-        padding: 20px 0;
+        padding: 40px 0; 
     }
-    
+
     .social-links svg {
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
     }
 }
 
-/* Media Queries for Large Desktop Responsiveness */
-@media (min-width: 1729px) {
+/* Media Queries for Desktop Responsiveness */
+@media (min-width: 835px) {
     .header-container {
         text-align: center;
     }
-    
+
     .logo {
-        top: 60%; 
+        top: 30%; 
     }
-    
+
     .logo h1 {
-        font-size: 72px; 
+        font-size: 60px; 
     }
-    
+
     .logo p {
-        font-size: 18px; 
+        font-size: 16px; 
     }
-    
-    .login-container {
-        padding: 50px;
-        margin-bottom: 50px; 
+
+    .container {
+        padding: 20px;
     }
-    
-    .login-container input[type="text"],
-    .login-container input[type="password"] {
-        padding: 30px;
+
+    .form-box {
+        padding: 20px;
+    }
+
+    .form-box input[type="text"],
+    .form-box textarea {
+        padding: 20px;
         font-size: 18px;
     }
-    
+
     footer {
-        padding: 40px 0;
+        padding: 60px 0;
     }
-    
+
     .social-links svg {
         width: 48px;
         height: 48px;

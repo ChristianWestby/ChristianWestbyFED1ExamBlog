@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Innlogging</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap">
-    <link rel="stylesheet" href="/account/login.css">
-    <script src="/account/auth.js" defer></script>
-    <script src="/account/login.js" defer></script>
+    <title>Edit or Delete Post</title>
+    <link rel="stylesheet" href="/account/editpost.css">
+    <script src="editpost.js" defer></script>
 </head>
 <body>
     <header>
@@ -24,20 +22,39 @@
         </div>
     </header>
 
-    <h2 class="page-heading">#Admin Login</h2>
-    <div class="login-container">
-        <form id="login-form" onsubmit="handleLogin(); return false;">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">Sign in</button>
-        </form>
-        <p>Har du allerede logget inn? <a href="/ChristianWestbyFED1ExamBlog/account/adminuserpage.html" class="button-link">Go to Admin main-page</a></p>
+    <div class="container">
+        <h1 class="form-heading">Edit & Delete Post</h1>
+        <div class="form-box">
+            <form id="edit-post-form">
+                <div id="post-checkbox-container" class="post-checkbox"></div>
+
+                <button type="button" id="edit-post-btn">Edit Post</button>
+                <button type="button" id="delete-post-btn">Delete Post</button>
+                <button type="button" class="back-btn">Back to Admin Page</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal edit-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="modal-heading">Edit Post</h2>
+            <form id="update-post-form">
+                <label for="updated-title">Title:</label>
+                <input type="text" id="updated-title" placeholder="Title">
+
+                <label for="updated-author">Author:</label>
+                <input type="text" id="updated-author" placeholder="Author">
+
+                <label for="edit-image-url">Image URL:</label>
+                <input type="text" id="edit-image-url" placeholder="Image URL">
+
+                <label for="updated-content">Post content:</label>
+                <textarea id="updated-content" placeholder="Post content"></textarea>
+
+                <button type="submit" id="save-button">Save and Close</button>
+            </form>
+        </div>
     </div>
 
     <footer>
