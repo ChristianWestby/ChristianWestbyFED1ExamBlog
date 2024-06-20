@@ -1,4 +1,4 @@
-/* CSS-stil for Admin User Page */
+
 
 /* General Styles */
 body {
@@ -17,13 +17,13 @@ body {
 
 .header-image img {
     width: 100%;
-    height: 300px; /* Shortened height */
+    height: 300px; 
     object-fit: cover;
 }
 
 .logo {
     position: absolute;
-    top: 60%; /* Adjusted to lower the logo */
+    top: 60%; 
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -31,7 +31,7 @@ body {
 }
 
 .logo h1 {
-    font-size: 60px; /* Larger font size for h1 */
+    font-size: 60px; 
     letter-spacing: 2px;
     text-transform: uppercase;
     margin: 0;
@@ -44,7 +44,7 @@ body {
 }
 
 .logo p {
-    font-size: 14px; /* Smaller font size for p */
+    font-size: 14px; 
     line-height: 20px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -75,7 +75,7 @@ body {
 }
 
 .form-box {
-    background-color: #000; /* Black background */
+    background-color: #000; 
     border-radius: 6px;
     padding: 20px;
     border: 2px solid #E68900;
@@ -89,7 +89,7 @@ body {
 .admin-box li {
     list-style: none;
     margin-bottom: 10px;
-    background-color: #333; /* Dark background for items */
+    background-color: #333; 
     border: 1px solid #E68900;
     border-radius: 6px;
     padding: 10px;
@@ -109,7 +109,7 @@ body {
 footer {
     background-color: #333;
     color: #fff;
-    padding: 40px 0; /* Increased padding */
+    padding: 40px 0; 
     text-align: center;
 }
 
@@ -161,15 +161,15 @@ copyright p {
     }
 
     .logo {
-        top: 40%; /* Lower the logo for mobile */
+        top: 40%; 
     }
 
     .logo h1 {
-        font-size: 32px; /* Adjusted font size for mobile */
+        font-size: 32px; 
     }
 
     .logo p {
-        font-size: 12px; /* Adjusted font size for mobile */
+        font-size: 12px; 
     }
 
     .container {
@@ -202,15 +202,15 @@ copyright p {
     }
 
     .logo {
-        top: 40%; /* Adjusted for tablet to avoid overlapping */
+        top: 40%; 
     }
 
     .logo h1 {
-        font-size: 48px; /* Adjusted font size for tablet */
+        font-size: 48px; 
     }
 
     .logo p {
-        font-size: 14px; /* Adjusted font size for tablet */
+        font-size: 14px; 
     }
 
     .container {
@@ -227,7 +227,7 @@ copyright p {
     }
 
     footer {
-        padding: 40px 0; /* Increased padding */
+        padding: 40px 0; 
     }
 
     .social-links svg {
@@ -243,15 +243,15 @@ copyright p {
     }
 
     .logo {
-        top: 30%; /* Adjusted for desktop to avoid overlapping */
+        top: 30%; 
     }
 
     .logo h1 {
-        font-size: 60px; /* Adjusted font size for desktop */
+        font-size: 60px; 
     }
 
     .logo p {
-        font-size: 16px; /* Adjusted font size for desktop */
+        font-size: 16px; 
     }
 
     .container {
@@ -268,7 +268,7 @@ copyright p {
     }
 
     footer {
-        padding: 60px 0; /* Increased padding */
+        padding: 60px 0; 
     }
 
     .social-links svg {

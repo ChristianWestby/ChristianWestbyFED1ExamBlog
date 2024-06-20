@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentPostIndex = null;
     let blogData = [];
 
-    console.log("URL Parameters:", window.location.search); // Log URL parameters
-    console.log("Post ID:", postId); // Log retrieved post ID
+    console.log("URL Parameters:", window.location.search); 
+    console.log("Post ID:", postId); 
 
     if (!postId) {
         singlePostSection.innerHTML = `<p>No post ID provided in the URL.</p>`;
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     console.log("Fetching single post with ID:", postId);
 
-    // Fetch the single post by post ID
+  
     fetch(`https://v2.api.noroff.dev/blog/posts/Christian_Westby/${postId}`)
         .then(response => {
             console.log("Response status:", response.status);
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(function (data) {
             console.log("Fetched single post data:", data);
-            const singlePostData = data.data; // Assuming data.data contains the single post object
+            const singlePostData = data.data; 
 
             if (!singlePostData) {
                 console.error('No post found with the provided ID:', postId);
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
             singlePostSection.innerHTML = `<p>Error fetching post. Please try again later.</p>`;
         });
 
-    // Fetch blog posts for the grid and for navigation
+    
     console.log("Fetching blog posts for grid");
     fetch("https://v2.api.noroff.dev/blog/posts/Christian_Westby")
         .then(response => {
@@ -56,13 +56,13 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(function (data) {
             console.log("Fetched blog posts data:", data);
-            blogData = data.data; // Using data.data for the blog posts
+            blogData = data.data; 
 
             if (!Array.isArray(blogData) || blogData.length === 0) {
                 throw new Error('No blog posts found');
             }
 
-            // Find the index of the current post
+          
             currentPostIndex = blogData.findIndex(post => post.id === postId);
 
             appendGridPosts(blogData);
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error("Error fetching blog posts:", error);
         });
 
-    // Append single post content
+  
     function appendSinglePost(postData) {
         singlePostSection.innerHTML = `
             <h1>${postData.title}</h1>
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         `;
 
-        // Add event listener for the Next Post button
+      
         document.getElementById("next-post-button").addEventListener("click", function () {
             if (currentPostIndex !== null && blogData.length > 0) {
                 currentPostIndex = (currentPostIndex + 1) % blogData.length;
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Append grid posts
+    
     function appendGridPosts(posts) {
         posts.slice(0, 12).forEach(post => {
             const newDiv = document.createElement("div");

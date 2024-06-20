@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const gridContainer = document.getElementById("grid-container");
 
     const urlParams = new URLSearchParams(window.location.search);
-    const postId = urlParams.get('id') || 'Christian_Westby'; // Use a default post ID for testing
+    const postId = urlParams.get('id') || 'Christian_Westby';
 
-    // Function to fetch posts for a specific user
+    
     function fetchPostsForUser(userId) {
         fetch(`https://v2.api.noroff.dev/blog/posts/${userId}`)
             .then(response => {
@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 return response.json();
             })
             .then(function (data) {
-                console.log("Fetched posts data:", data); // Log fetched data for debugging
-                const posts = data.data; // Extract posts from response
+                console.log("Fetched posts data:", data); 
+                const posts = data.data; // 
 
                 if (posts.length === 0) {
                     singlePostSection.innerHTML = `<p>No posts found for user ${userId}.</p>`;
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 const randomIndex = Math.floor(Math.random() * posts.length);
-                const singlePostData = posts[randomIndex]; // Select a random post
+                const singlePostData = posts[randomIndex]; 
 
                 const singlePostDiv = document.createElement("div");
                 singlePostDiv.classList.add("post");
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 `;
                 singlePostSection.appendChild(singlePostDiv);
 
-                // Add posts to carousel and grid
+               
                 appendPostsToCarousel(posts);
                 appendPostsToGrid(posts);
             })
@@ -48,12 +48,12 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
-    // Fetch posts for a specific user
+    
     fetchPostsForUser(postId);
 
-    // Function to append posts to the carousel
+    
     function appendPostsToCarousel(posts) {
-        const carouselItems = posts.slice(0, 6).map(post => {
+        const carouselItems = posts.slice(-3).map(post => {
             const newDiv = document.createElement("div");
             newDiv.classList.add("carousel-card");
             newDiv.innerHTML = `
@@ -66,14 +66,10 @@ document.addEventListener('DOMContentLoaded', function () {
             return newDiv;
         });
 
-        // Clone the last 3 items to enable infinite scroll
-        const carouselClones = carouselItems.map(item => item.cloneNode(true));
-        carouselItems.push(...carouselClones);
-
         carouselItems.forEach(item => carouselInner.appendChild(item));
     }
 
-    // Function to append posts to the grid
+   
     function appendPostsToGrid(posts) {
         posts.slice(0, 12).forEach(post => {
             const newDiv = document.createElement("div");
@@ -88,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Function to truncate strings to a specified length
+    
     function truncateString(str, num) {
         if (str.length <= num) {
             return str;
@@ -96,17 +92,17 @@ document.addEventListener('DOMContentLoaded', function () {
         return str.slice(0, num) + '...';
     }
 
-    // Infinite scroll functionality for the carousel
+   
     function startInfiniteScroll() {
-        const scrollSpeed = 1; // Adjust scroll speed as needed
+        const scrollSpeed = 1; 
         let scrollPosition = 0;
 
         function scrollStep() {
             scrollPosition += scrollSpeed;
             carouselInner.scrollLeft = scrollPosition;
 
-            // Loop the scroll position if it reaches the end
-            if (scrollPosition >= carouselInner.scrollWidth / 2) {
+            
+            if (scrollPosition >= carouselInner.scrollWidth - carouselInner.clientWidth) {
                 scrollPosition = 0;
             }
 
@@ -118,12 +114,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     startInfiniteScroll();
 
-    // Event listeners for carousel controls
+    
     document.getElementById('carousel-prev').addEventListener('click', function () {
-        carouselInner.scrollBy({ left: -220, behavior: 'smooth' });
+        carouselInner.scrollBy({ left: -300, behavior: 'smooth' });
     });
 
     document.getElementById('carousel-next').addEventListener('click', function () {
-        carouselInner.scrollBy({ left: 220, behavior: 'smooth' });
+        carouselInner.scrollBy({ left: 300, behavior: 'smooth' });
     });
 });

@@ -4,12 +4,12 @@ const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ2hyaXN0aWFu
 
 function createPost() {
     const title = document.getElementById("title").value;
-    const imageUrl = document.getElementById("image-url").value; // Henter URL-adressen for bilder
+    const imageUrl = document.getElementById("image-url").value; 
     const content = document.getElementById("content").value;
 
     const postData = {
         title: title,
-        imageUrl: imageUrl, // Inkluderer URL-adressen for bilder i postdataene
+        imageUrl: imageUrl, 
         content: content
     };
 

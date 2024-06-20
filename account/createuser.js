@@ -1,32 +1,32 @@
 // Funksjon for å håndtere opprettelse av ny bruker
 function handleCreateUser() {
-    const username = document.getElementById('username').value; // Henter brukernavn fra skjemaet
-    const email = document.getElementById('email').value; // Henter e-postadresse fra skjemaet
-    const password = document.getElementById('password').value; // Henter passord fra skjemaet
+    const username = document.getElementById('username').value; 
+    const email = document.getElementById('email').value; 
+    const password = document.getElementById('password').value; 
 
-    const userData = { // Oppretter et objekt med brukernavn, e-post og passord
+    const userData = { 
         name: username,
         email: email,
         password: password
     };
 
-    fetch('https://v2.api.noroff.dev/auth/register', { // Sender en fetch()-forespørsel til API-et
-        method: 'POST', // Bruker POST-metoden for å sende data
+    fetch('https://v2.api.noroff.dev/auth/register', { 
+        method: 'POST', 
         headers: {
-            'Content-Type': 'application/json' // Setter riktig innholdstype for forespørselen
+            'Content-Type': 'application/json' 
         },
-        body: JSON.stringify(userData) // Konverterer userData til JSON-format og sender det som kropp av forespørselen
+        body: JSON.stringify(userData) 
     })
         .then(response => {
-            if (response.ok) { // Sjekker om responsen er vellykket (statuskode 200-299)
-                window.location.href = '/account/adminuserpage.html'; // Omdirigerer til administrasjonssiden ved vellykket oppretting av bruker
+            if (response.ok) { 
+                window.location.href = '/account/adminuserpage.html'; 
             } else {
                 return response.json().then(data => {
-                    throw new Error(data.message || 'Kunne ikke opprette bruker.'); // Kaster en feil hvis oppretting av bruker mislykkes
+                    throw new Error(data.message || 'Kunne ikke opprette bruker.'); 
                 });
             }
         })
         .catch(error => {
-            document.getElementById('error-message').textContent = error.message; // Viser feilmelding til brukeren
+            document.getElementById('error-message').textContent = error.message; 
         });
 }

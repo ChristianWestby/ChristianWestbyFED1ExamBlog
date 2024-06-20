@@ -17,13 +17,13 @@ body {
 
 .header-image img {
     width: 100%;
-    height: 300px; /* Shortened height */
+    height: 300px; 
     object-fit: cover;
 }
 
 .logo {
     position: absolute;
-    top: 60%; /* Adjusted to lower the logo */
+    top: 60%; 
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -31,7 +31,7 @@ body {
 }
 
 .logo h1 {
-    font-size: 60px; /* Larger font size for h1 */
+    font-size: 60px; 
     letter-spacing: 2px;
     text-transform: uppercase;
     margin: 0;
@@ -44,7 +44,7 @@ body {
 }
 
 .logo p {
-    font-size: 14px; /* Smaller font size for p */
+    font-size: 14px; 
     line-height: 20px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -65,28 +65,28 @@ body {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #000; /* Black background for the container */
+    background-color: #000; 
     border-radius: 6px;
-    border: 2px solid #E68900; /* Orange border for the container */
+    border: 2px solid #E68900; 
 }
 
 .form-heading {
     text-align: center;
     font-weight: lighter;
-    color: #E68900; /* Updated to orange color */
+    color: #E68900; 
     text-decoration: underline;
-    margin-bottom: 20px; /* Added margin for spacing */
+    margin-bottom: 20px; 
 }
 
 .form-box {
-    background-color: #333; /* Grey/Black background for the form box */
+    background-color: #333; 
     border-radius: 6px;
     padding: 20px;
     border: 2px solid #E68900;
 }
 
 .form-box label {
-    color: #E68900; /* Orange color text */
+    color: #E68900; 
     font-weight: bold;
     display: block;
     margin: 10px 0 5px;
@@ -100,13 +100,13 @@ body {
     border: 1px solid #E68900;
     border-radius: 6px;
     box-sizing: border-box;
-    background-color: #333; /* Dark background for inputs */
-    color: #fff; /* White text color for inputs */
+    background-color: #333; 
+    color: #fff; 
 }
 
 .form-box input[type="text"]::placeholder,
 .form-box textarea::placeholder {
-    color: #E68900; /* Orange placeholder text */
+    color: #E68900; 
     font-style: italic;
 }
 
@@ -129,7 +129,7 @@ body {
     align-items: center;
     margin: 10px 0;
     padding-bottom: 10px;
-    border-bottom: 1px solid #E68900; /* Add underline after each post */
+    border-bottom: 1px solid #E68900; 
 }
 
 .checkbox-wrapper label {
@@ -152,14 +152,14 @@ body {
 }
 
 .modal-content {
-    background-color: #333; /* Dark background for the modal */
+    background-color: #333; 
     margin: 5% auto;
     padding: 20px;
-    border: 1px solid #E68900; /* Orange border for the modal */
-    width: 60%; /* Increased width for larger modal */
-    height: 80%; /* Increased height for larger modal */
+    border: 1px solid #E68900; 
+    width: 60%; 
+    height: 80%; 
     border-radius: 6px;
-    overflow-y: auto; /* Added scroll if content overflows */
+    overflow-y: auto; 
 }
 
 .modal-content h2 {
@@ -168,7 +168,7 @@ body {
 }
 
 .modal-content label {
-    color: #E68900; /* Orange color for labels in the modal */
+    color: #E68900; 
     font-weight: bold;
     display: block;
     margin: 10px 0 5px;
@@ -177,23 +177,23 @@ body {
 .modal-content input[type="text"],
 .modal-content textarea {
     width: 100%;
-    padding: 10px; /* Increased padding for inputs */
+    padding: 10px; 
     margin: 5px 0;
     border: 1px solid #E68900;
     border-radius: 6px;
     box-sizing: border-box;
-    background-color: #333; /* Dark background for inputs */
-    color: #fff; /* White text color for inputs */
+    background-color: #333; 
+    color: #fff; 
 }
 
 .modal-content textarea {
-    height: 200px; /* Increased height for textarea */
-    max-height: 400px; /* Maximum height for textarea */
+    height: 200px; 
+    max-height: 400px; 
 }
 
 .modal-content input[type="text"]::placeholder,
 .modal-content textarea::placeholder {
-    color: #E68900; /* Orange placeholder text */
+    color: #E68900; 
     font-style: italic;
 }
 
@@ -228,7 +228,7 @@ body {
 footer {
     background-color: #333;
     color: #fff;
-    padding: 40px 0; /* Increased padding */
+    padding: 40px 0; 
     text-align: center;
 }
 
@@ -280,15 +280,15 @@ copyright p {
     }
     
     .logo {
-        top: 40%; /* Lower the logo for mobile */
+        top: 40%; 
     }
     
     .logo h1 {
-        font-size: 32px; /* Adjusted font size for mobile */
+        font-size: 32px; 
     }
     
     .logo p {
-        font-size: 12px; /* Adjusted font size for mobile */
+        font-size: 12px; 
     }
     
     .container {
@@ -306,7 +306,7 @@ copyright p {
     }
     
     .form-box button.back-btn {
-        margin-top: 40px; /* Ensure there's enough space in mobile view */
+        margin-top: 40px; 
     }
     
     footer {
@@ -326,15 +326,15 @@ copyright p {
     }
     
     .logo {
-        top: 40%; /* Adjusted for tablet to avoid overlapping */
+        top: 40%; 
     }
     
     .logo h1 {
-        font-size: 48px; /* Adjusted font size for tablet */
+        font-size: 48px; 
     }
     
     .logo p {
-        font-size: 14px; /* Adjusted font size for tablet */
+        font-size: 14px; 
     }
     
     .container {
@@ -352,7 +352,7 @@ copyright p {
     }
     
     .form-box button.back-btn {
-        margin-top: 40px; /* Ensure there's enough space in tablet view */
+        margin-top: 40px; 
     }
     
     footer {
@@ -372,15 +372,15 @@ copyright p {
     }
     
     .logo {
-        top: 60%; /* Adjusted for desktop to avoid overlapping */
+        top: 60%; 
     }
     
     .logo h1 {
-        font-size: 60px; /* Adjusted font size for desktop */
+        font-size: 60px; 
     }
     
     .logo p {
-        font-size: 16px; /* Adjusted font size for desktop */
+        font-size: 16px; 
     }
     
     .container {
@@ -398,7 +398,7 @@ copyright p {
     }
     
     .form-box button.back-btn {
-        margin-top: 40px; /* Ensure there's enough space in desktop view */
+        margin-top: 40px; 
     }
     
     footer {
@@ -418,15 +418,15 @@ copyright p {
     }
     
     .logo {
-        top: 60%; /* Adjusted for large desktop to avoid overlapping */
+        top: 60%; 
     }
     
     .logo h1 {
-        font-size: 72px; /* Adjusted font size for large desktop */
+        font-size: 72px; 
     }
     
     .logo p {
-        font-size: 18px; /* Adjusted font size for large desktop */
+        font-size: 18px; 
     }
     
     .container {
@@ -444,7 +444,7 @@ copyright p {
     }
     
     .form-box button.back-btn {
-        margin-top: 40px; /* Ensure there's enough space in large desktop view */
+        margin-top: 40px; 
     }
     
     footer {

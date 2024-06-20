@@ -18,16 +18,16 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             console.log('Data hentet:', data);
 
-            const posts = data.data; // Bruker data.data som posts
+            const posts = data.data; 
             console.log('Posts:', posts);
 
             const postContainer = document.getElementById('post-checkbox-container');
 
-            // Tøm avkryssningsfeltene før du legger til nye poster
+           
             postContainer.innerHTML = '';
 
             if (Array.isArray(posts)) {
-                // Gå gjennom hver post og opprett et avkryssningsfelt for den
+               
                 posts.forEach((post, index) => {
                     console.log('Post:', post);
                     const checkboxWrapper = document.createElement('div');
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Funksjon for å hente den avkryssede posten for redigering
+   
     function fetchSelectedPostForEditing() {
         const selectedPostCheckbox = document.querySelector('input[name="post"]:checked');
 
@@ -82,16 +82,16 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(post => {
                 console.log('Post hentet for redigering:', post);
                 
-                const postData = post.data; // Bruker post.data for å få tilgang til postens faktiske data
+                const postData = post.data; 
                 console.log('Post Data:', postData);
 
-                // Fyller inn skjemaet med postens tittel, forfatter, innhold og bilde-URL
+                
                 document.getElementById('updated-title').value = postData.title || '';
                 document.getElementById('updated-author').value = postData.author.name || '';
                 document.getElementById('updated-content').value = postData.body || '';
                 document.getElementById('edit-image-url').value = postData.media ? postData.media.url : '';
 
-                // Åpne redigeringsvinduet
+                
                 document.querySelector('.edit-modal').style.display = 'block';
             })
             .catch(error => {
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Funksjon for å oppdatere posten
+   
     function updatePost(event) {
         event.preventDefault();
 
@@ -145,14 +145,14 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             console.log('Post oppdatert:', data);
             document.querySelector('.edit-modal').style.display = 'none';
-            fetchPosts(); // Oppdater postlisten etter oppdatering
+            fetchPosts(); 
         })
         .catch(error => {
             console.error('Feil ved oppdatering av posten:', error);
         });
     }
 
-    // Funksjon for å slette posten
+   
     function deletePost() {
         const selectedPostCheckbox = document.querySelector('input[name="post"]:checked');
         if (!selectedPostCheckbox) {
@@ -174,13 +174,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 throw new Error('Feil ved sletting av posten');
             }
             console.log('Post slettet:', selectedPostId);
-            // Oppdater postlisten etter sletting
+           
             fetchPosts();
         })
         .catch(error => {
             console.error('Feil ved sletting av posten:', error);
         });
     }
+
+    // Back to Admin Page button functionality
+    document.querySelector('.back-btn').addEventListener('click', function () {
+        window.location.href = "/account/adminuserpage.html";
+    });
 
     document.getElementById('edit-post-btn').addEventListener('click', fetchSelectedPostForEditing);
     document.getElementById('update-post-form').addEventListener('submit', updatePost);

@@ -17,13 +17,13 @@ body {
 
 .header-image img {
     width: 100%;
-    height: 300px; /* Shortened height */
+    height: 300px; 
     object-fit: cover;
 }
 
 .logo {
     position: absolute;
-    top: 70%; /* Adjusted to lower the logo */
+    top: 70%; 
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -31,7 +31,7 @@ body {
 }
 
 .logo h1 {
-    font-size: 60px; /* Larger font size for h1 */
+    font-size: 60px; 
     letter-spacing: 2px;
     text-transform: uppercase;
     margin: 0;
@@ -44,7 +44,7 @@ body {
 }
 
 .logo p {
-    font-size: 14px; /* Smaller font size for p */
+    font-size: 14px; 
     line-height: 20px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -64,12 +64,12 @@ body {
 .hero-box-1 {
     width: 100%;
     height: 130px;
-    background-color: rgba(230, 138, 0, 0.5); /* Semi-transparent background to overlay on image */
+    background-color: rgba(230, 138, 0, 0.5); 
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 0; /* Positioned at the bottom of the header */
+    bottom: 0; 
 }
 
 .hero-box-1 h1 {
@@ -83,19 +83,19 @@ body {
 .page-heading {
     text-align: center;
     font-weight: lighter;
-    color: #100f0f; /* Black color for heading */
+    color: #100f0f; 
     text-decoration: underline;
-    margin: 40px 0 20px; /* Added margin for spacing */
+    margin: 40px 0 20px; 
 }
 
 .login-container {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #000; /* Black background */
+    background-color: #000; 
     border-radius: 6px;
-    border: 2px solid #E68900; /* Orange border */
-    margin-bottom: 50px; /* Added margin to create space from the footer */
+    border: 2px solid #E68900; 
+    margin-bottom: 50px; 
 }
 
 .form-group {
@@ -105,7 +105,7 @@ body {
 label {
     display: block;
     font-weight: bold;
-    color: #E68900; /* Orange color for labels */
+    color: #E68900; 
     margin-bottom: 5px;
 }
 
@@ -113,17 +113,17 @@ input[type="text"],
 input[type="password"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #E68900; /* Orange border */
+    border: 1px solid #E68900; 
     border-radius: 6px;
     box-sizing: border-box;
-    background-color: #333; /* Dark background for inputs */
-    color: #fff; /* White text color for inputs */
+    background-color: #333; 
+    color: #fff; 
 }
 
 button {
     width: 100%;
     padding: 10px;
-    background-color: #E68900; /* Orange background */
+    background-color: #E68900; 
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -132,7 +132,7 @@ button {
 }
 
 button:hover {
-    background-color: #555; /* Grey background on hover */
+    background-color: #555; 
 }
 
 .button-link {
@@ -148,7 +148,7 @@ button:hover {
 }
 
 .button-link:hover {
-    background-color: #555; /* Grey background on hover */
+    background-color: #555; 
 }
 
 footer {
@@ -206,15 +206,15 @@ copyright p {
     }
     
     .logo {
-        top: 40%; /* Lower the logo for mobile */
+        top: 40%; 
     }
     
     .logo h1 {
-        font-size: 32px; /* Adjusted font size for mobile */
+        font-size: 32px; 
     }
     
     .logo p {
-        font-size: 12px; /* Adjusted font size for mobile */
+        font-size: 12px; 
     }
     
     .hero-box-1 {
@@ -230,7 +230,7 @@ copyright p {
     
     .login-container {
         padding: 30px;
-        margin-bottom: 30px; /* Adjusted margin for mobile view */
+        margin-bottom: 30px; 
     }
     
     .login-container input[type="text"],
@@ -256,20 +256,20 @@ copyright p {
     }
     
     .logo {
-        top: 60%; /* Adjusted for tablet to avoid overlapping */
+        top: 60%; 
     }
     
     .logo h1 {
-        font-size: 48px; /* Adjusted font size for tablet */
+        font-size: 48px; 
     }
     
     .logo p {
-        font-size: 16px; /* Adjusted font size for tablet */
+        font-size: 16px; 
     }
     
     .login-container {
         padding: 40px;
-        margin-bottom: 40px; /* Adjusted margin for tablet view */
+        margin-bottom: 40px; 
     }
     
     .login-container input[type="text"],
@@ -295,20 +295,20 @@ copyright p {
     }
     
     .logo {
-        top: 60%; /* Adjusted for large desktop to avoid overlapping */
+        top: 60%; 
     }
     
     .logo h1 {
-        font-size: 72px; /* Adjusted font size for large desktop */
+        font-size: 72px; 
     }
     
     .logo p {
-        font-size: 18px; /* Adjusted font size for large desktop */
+        font-size: 18px; 
     }
     
     .login-container {
         padding: 50px;
-        margin-bottom: 50px; /* Adjusted margin for large desktop view */
+        margin-bottom: 50px; 
     }
     
     .login-container input[type="text"],
