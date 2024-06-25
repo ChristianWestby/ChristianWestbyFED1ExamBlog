@@ -1,7 +1,7 @@
 // Funksjon for å logge inn og få tilgangstoken
 function login(username, password) {
     const credentials = {
-        email: username,  
+        email: username,
         password: password
     };
 
@@ -19,12 +19,14 @@ function login(username, password) {
             return response.json();
         })
         .then(data => {
-            const token = data.data.accessToken; 
-            localStorage.setItem('accessToken',token); 
-            console.log('Innlogging vellykket! Tilgangstoken lagret:',token);
-            window.location.href = '/account/adminuserpage.html'; 
+            const token = data.data.accessToken;
+            localStorage.setItem('accessToken', token);
+            localStorage.setItem('isAdmin', 'true'); // Sett admin flag
+            console.log('Innlogging vellykket! Tilgangstoken lagret:', token);
+            window.location.href = '/account/adminuserpage.html';
         })
         .catch(error => {
             console.error('Feil ved innlogging:', error.message);
+            alert('Feil brukernavn eller passord'); // Gi tilbakemelding til brukeren
         });
 }

@@ -5,7 +5,6 @@ body {
     padding: 0;
 }
 
-
 .header-container {
     position: relative;
     width: 100%;
@@ -125,7 +124,6 @@ body {
     object-fit: cover; 
 }
 
-
 #admin-post {
     text-align: center;
     margin: 40px auto; 
@@ -153,7 +151,6 @@ body {
     margin-right: 10px;
 }
 
-
 #single-post {
     background-color: #070a0d;
     color: rgb(245, 237, 237);
@@ -174,7 +171,6 @@ body {
     border-radius: 5px;
     margin: 20px 0; 
 }
-
 
 #blog-list-grid {
     margin: 60px auto; 
@@ -259,7 +255,6 @@ body {
     background-color: #45A049;
 }
 
-
 .button-container {
     display: flex;
     justify-content: space-around;
@@ -302,7 +297,6 @@ body {
 .homepage-button:hover {
     background-color: #45A049;
 }
-
 
 footer {
     background-color: #333;

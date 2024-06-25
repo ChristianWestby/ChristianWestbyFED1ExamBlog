@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     console.log("Fetching single post with ID:", postId);
 
-  
     fetch(`https://v2.api.noroff.dev/blog/posts/Christian_Westby/${postId}`)
         .then(response => {
             console.log("Response status:", response.status);
@@ -44,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
             singlePostSection.innerHTML = `<p>Error fetching post. Please try again later.</p>`;
         });
 
-    
     console.log("Fetching blog posts for grid");
     fetch("https://v2.api.noroff.dev/blog/posts/Christian_Westby")
         .then(response => {
@@ -62,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 throw new Error('No blog posts found');
             }
 
-          
             currentPostIndex = blogData.findIndex(post => post.id === postId);
 
             appendGridPosts(blogData);
@@ -71,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error("Error fetching blog posts:", error);
         });
 
-  
     function appendSinglePost(postData) {
         singlePostSection.innerHTML = `
             <h1>${postData.title}</h1>
@@ -84,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         `;
 
-      
         document.getElementById("next-post-button").addEventListener("click", function () {
             if (currentPostIndex !== null && blogData.length > 0) {
                 currentPostIndex = (currentPostIndex + 1) % blogData.length;
@@ -93,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    
     function appendGridPosts(posts) {
         posts.slice(0, 12).forEach(post => {
             const newDiv = document.createElement("div");
