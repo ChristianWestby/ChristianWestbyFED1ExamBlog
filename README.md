@@ -48,6 +48,11 @@ You can view the project planning board on GitHub:
 [GitHub Project Planning](https://github.com/ChristianWestby/ChristianWestbyFED1ExamBlog/issues)
 
 ## Admin Login
+<a href="https://ibb.co/7rPQBQF"><img src="https://i.ibb.co/F82XcXt/image.png" alt="image" border="0"></a>
+
+You can acsess the ADMIN pages via the link in the footer. 
+
+
 To access the admin user page, use the following credentials:
 - **Username**: Christian_Westby
 - **Email**: christian.westby@stud.noroff.no
